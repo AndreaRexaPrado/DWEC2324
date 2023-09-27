@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Practica 101_2</title>
+    </head>
+    <body>
+        <script>
+            function saludar(){
+                var saludo = "Hola";
+                window.alert(saludo + " desde dentro la funcion");
+            }
+            saludar();
+            //window.alert(saludo + " desde fuera la funcion");
+
+            var despedida = "Adios";
+            function despedir(){
+                
+                window.alert(despedida + " desde dentro la funcion");
+            }
+            despedir();
+            window.alert(despedida + " desde fuera la funcion");
+
+            var var1 = 2;
+
+            function ambito (){
+                var var1 = 4;
+                window.alert("var1: " + var1 + " desde dentro de la funcion");
+            }
+            window.alert("var1: " + var1 + " desde fuera de la funcion");
+            ambito();
+
+            
+        </script>
+    </body>
+</html>        
