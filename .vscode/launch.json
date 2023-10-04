@@ -4,11 +4,12 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Open Clase29092023.html",
-            "file": "c:\\Users\\mañana\\Desktop\\DWEC\\Clase29092023.html"
+            "name": "Open Ejercicio1_LaPeliculera.html",
+            "file": "c:\\Users\\mañana\\Desktop\\DWEC\\Ejercicio1_LaPeliculera.html"
         }
     ]
 }

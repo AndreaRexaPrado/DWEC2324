@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Var let const</title>
+    </head>
+    <body>
+       
+        <script>
+            /*var diHola = (name) => `Hola ${name}!`;
+            var diAdios = (name) =>{
+                return `Adios ${name}!`;
+            }
+            console.log(diHola('Pepe'));
+            console.log(diAdios('Pepe'));*/
+            
+            let res = (base, exponente) =>{
+                resultado = 1;
+                resultado = (exponente == 0?1:resultado*base);
+
+                for(i=1;i < Math.abs(exponente);i++){
+                    resultado *= base; 
+                }
+
+                return exponente > 0?resultado:1%resultado;
+            }
+
+            let base = prompt("Dame una base:");
+            let exponente = prompt("Dame un exponente:");
+            
+            alert(base +"^"+exponente+"="+ res(base, exponente));
+        </script>
+
+        
+    </body>
+</html>
