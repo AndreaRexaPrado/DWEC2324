@@ -10,8 +10,8 @@
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Open 101_1_ARP.html",
-            "file": "c:\\Users\\mañana\\Desktop\\DWEC\\101_1_ARP.html"
+            "name": "Open Ejercicio4_1.html",
+            "file": "c:\\Users\\mañana\\Desktop\\DWEC\\Ejercicio4_1.html"
         }
     ]
 }
