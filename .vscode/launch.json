@@ -5,11 +5,13 @@
     "version": "0.2.0",
     "configurations": [
 
+
+
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Open Ejercicio1_LaPeliculera.html",
-            "file": "c:\\Users\\mañana\\Desktop\\DWEC\\Ejercicio1_LaPeliculera.html"
+            "name": "Open 101_1_ARP.html",
+            "file": "c:\\Users\\mañana\\Desktop\\DWEC\\101_1_ARP.html"
         }
     ]
 }
