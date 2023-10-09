@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Var let const</title>
+    </head>
+    <body>
+       <p id="p"></p>
+        <script>
+           /* const personas = [{nombre:"Pepe", edad:43},
+                              {nombre:"Pepa", edad:34},
+                              {nombre:"Pepin", edad:2}];    
+            
+            let personasOrdenado = personas.sort((persona1,persona2) => persona2.edad-persona1.edad);
+            //para ordenar cadenas toLocaleCompare
+            console.log(personas);
+            console.log(personasOrdenado);*/
+            function ordenarArray(){
+                let arrOrdenado = [];
+                for(i=0;i<=arguments.length-1;i++){
+                    arrOrdenado.push(arguments[i]);
+                }
+                arrOrdenado.sort();
+                return arrOrdenado;
+            }
+
+            console.log(ordenarArray(4,6,"2",3,1,6,"4"),);
+        </script>
+
+        
+    </body>
+</html>
