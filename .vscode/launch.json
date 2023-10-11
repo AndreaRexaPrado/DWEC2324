@@ -10,8 +10,8 @@
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Open Clase09102023.html",
-            "file": "c:\\Users\\mañana\\Desktop\\DWEC\\Clase09102023.html"
+            "name": "Open Ejercicio_tren.html",
+            "file": "c:\\Users\\mañana\\Desktop\\DWEC\\Ejercicio_tren.html"
         }
     ]
 }
