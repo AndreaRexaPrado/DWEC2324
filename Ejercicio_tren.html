@@ -4,10 +4,69 @@
         <title>Ejercicio 9.1</title>
     </head>
     <body>
+        <p id="Pasajeros"></p>
         <script>
-            let numero = prompt("Dame el numero");
-            const arrayNumero= numero.split();
-            console.log(arrayNumero);
+            function pedirNumero(){
+                let numero = prompt("Dame el numero");
+                const arrayNum= numero.split('');
+                const tren = [];
+                comprobarParejas(arrayNum);
+                comprobarNumero(arrayNum);  
+                dividirArrayEstaciones(arrayNum,tren);
+                calcularPasajerosFinal(tren);
+            }
+
+            function comprobarParejas(arrayNum){
+                while(arrayNum.length%2!=0){
+                    pedirNumero();
+                }
+            }
+
+            function dividirArrayEstaciones(arrayNum,tren){
+                while(arrayNum.length-1 >=0){
+                    const [bajan,suben] = arrayNum;            
+                    const estacion = [Number(bajan),Number(suben)];
+                    arrayNum.splice(0,2);
+                    
+                    tren.push(estacion);               
+                }
+            }
+
+            function comprobarNumero(arrayNum){
+                
+                for(let i = 0;i <= arrayNum.length-1 ;i++){
+                    if(isNaN(parseInt(arrayNum[i]))){
+                        alert("Numero erroneo NAN");
+                        pedirNumero();
+                    
+                    }
+
+                }
+
+                for(let i = 0;i <= arrayNum.length-1 ;i=i+2){
+
+                    if(parseInt(arrayNum[i]) > parseInt(arrayNum[i+1])){
+                        alert("Numero erroneo error ");
+                        pedirNumero();
+                    
+                    }
+                }
+           
+            }
+
+            function calcularPasajerosFinal(tren){
+                let pasajeros=0;
+                //68573528463604
+                //68573528467604
+                for(let i = tren.length-1;i>=0;i--){
+                    pasajeros-=tren[i][0];
+                    pasajeros+=tren[i][1];
+                }
+                document.getElementById("Pasajeros").innerHTML="En la estacion final se bajaran: " + pasajeros;
+            }
+
+            pedirNumero();
+
         </script>
     </body>
 </html>
