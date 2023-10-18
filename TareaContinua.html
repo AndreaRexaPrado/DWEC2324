@@ -6,6 +6,28 @@
     <body>
         
         <script>
+            function showContact(array, indice){
+                if(array instanceof Array && typeof(indice)== "number"){
+                    alert("Contacto: "+ array[indice].nombre + " / " + array[indice].telefono + " / " + array[indice].correo);
+                }
+            }
+            function showAllContact(array){
+                if(array instanceof Array ){
+                    let contactos="";
+                    arrayContactos.forEach(function(contacto) {
+                        contactos+="Contacto: "+contacto.nombre + " / " + contacto.telefono + " / " + contacto.correo + "\n";
+                    });
+                    alert(contactos);
+                }
+            }
+            function addNewContact(array,nombre,telf,correo){
+                if(array instanceof Array&&nombre!==""&&telf!==""&&correo!==""){
+                        //Se añade
+                        array.push({nombre: nombre,
+                                    telefono: telf,
+                                    correo: correo});
+                    }    
+            }
             //Declara e inicializa las variables donde se almacenara toda la informacion (en esta version en una sola, en un array)
             let arrayContactos = [{nombre:"Maxwell Wright",
                                    telefono: "(0191)7196495",
@@ -16,7 +38,9 @@
                                    {nombre:"Helen Richards",
                                    telefono: "08001111",
                                    correo: "libero@convallis.edu"}];
-            let bucle=true;                       
+            
+                                   let bucle=true;   
+
             while(bucle){
 
                                  
@@ -27,30 +51,21 @@
                                 "Salir del programa(Salir)");
             switch(opcion){
                 case "primero":
-                    alert("Primer contacto: "+ arrayContactos[0].nombre + " / " + arrayContactos[0].telefono + " / " + arrayContactos[0].correo);
+                    showContact(arrayContactos,0);
                     break;
                 case "ultimo":
-                    alert("Ultimo contacto: "+ arrayContactos[arrayContactos.length-1].nombre + " / " + arrayContactos[arrayContactos.length-1].telefono + " / " + arrayContactos[arrayContactos.length-1].correo); 
+                    showContact(arrayContactos,arrayContactos.length-1);
                     break;
                 case "todos":
-                    let contactos="";
-                    arrayContactos.forEach(function(contacto) {
-                        contactos+="Contacto: "+contacto.nombre + " / " + contacto.telefono + " / " + contacto.correo + "\n";
-                    });
-                    alert(contactos);
+                    showAllContact(arrayContactos);
                     break;
                 case "nuevo": 
                     //Se piden datos del usuario
                     let userNombre = prompt("Dame el nombre del contacto");
                     let userTelefono = prompt("Dame el telefono del contacto");
                     let userCorreo = prompt("Dame el correo del contacto");
-                    
-                    if(userNombre!==""&&userTelefono!==""&&userCorreo!==""){
-                        //Se añade
-                        arrayContactos.push({nombre: userNombre,
-                                            telefono: userTelefono,
-                                            correo: userCorreo});
-                    }          
+                     
+                    addNewContact(arrayContactos,userNombre,userTelefono,userCorreo);
                    // console.log("Ultimo contacto: "+ arrayContactos[arrayContactos.length-1].nombre + " / " + arrayContactos[arrayContactos.length-1].telefono + " / " + arrayContactos[arrayContactos.length-1].correo);          
                     break;
                 case "salir":
