@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Diferncias de for</title>
+    </head>
+    <body>
+       <p id="p"></p>
+        <script>
+           const hoy = [3,4,7,,{nombre:"juan",apellidos:"garcia"}];
+            console.log("For");
+            for(var indice=0; indice<=(hoy.length-1);indice++){
+                console.log(hoy[indice]);
+            }
+            console.log("For in");
+
+            for(const indice in hoy){
+                console.log(hoy[indice]);
+            }
+            console.log("For of");
+            
+            for(const indice of hoy){
+                console.log(hoy[indice]);
+            }
+            console.log("Foreach");
+
+            hoy.forEach(element => {
+                console.log(element);
+            });
+        </script>
+
+        
+    </body>
+</html>
