@@ -21,7 +21,7 @@
                     pedirNumero();
                 }
             }
-
+            
             function dividirArrayEstaciones(arrayNum,tren){
                 while(arrayNum.length-1 >=0){
                     const [bajan,suben] = arrayNum;            
@@ -31,9 +31,10 @@
                     tren.push(estacion);               
                 }
             }
-
+            //Funcion para comprobar que es un numero valido
             function comprobarNumero(arrayNum){
                 
+                //Se recorre el array buscando NaNs por si se ha introducido una letra
                 for(let i = 0;i <= arrayNum.length-1 ;i++){
                     if(isNaN(parseInt(arrayNum[i]))){
                         alert("Numero erroneo NAN");
@@ -42,7 +43,7 @@
                     }
 
                 }
-
+                //Se recorre el array para ver si en las parejas hay mas gente que se baja de las que se sube
                 for(let i = 0;i <= arrayNum.length-1 ;i=i+2){
 
                     if(parseInt(arrayNum[i]) > parseInt(arrayNum[i+1])){
@@ -53,7 +54,10 @@
                 }
            
             }
-
+            //Esta funcion recorre la matriz (tren) para calcular los pasajeros que se bajan al final,
+            //sabiendo lo siguiente: [[7,9],[4,5],[8,9]] -> en cada posicion hay un array con dos posiciones
+            //el 0 es son las que se bajan y el 1 los que suben asi que simplemente accedemos a estas posiciones mientras
+            //recorremos el array principal.
             function calcularPasajerosFinal(tren){
                 let pasajeros=0;
                 //68573528463604
