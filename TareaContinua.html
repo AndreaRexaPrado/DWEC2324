@@ -4,6 +4,7 @@
         <title>Tarea continua</title>
     </head>
     <body>
+        
         <script>
             //Declara e inicializa las variables donde se almacenara toda la informacion (en esta version en una sola, en un array)
             let arrayContactos = [{nombre:"Maxwell Wright",
@@ -20,12 +21,18 @@
             arrayContactos.push({nombre:"Maisie Haley",
                                  telefono: "0913 531 3030",
                                  correo: "risus.Quisque@urna.ca"});
-
+            //Se piden datos del usuario
+            let userNombre = prompt("Dame el nombre del contacto");
+            let userTelefono = prompt("Dame el telefono del contacto");
+            let userCorreo = prompt("Dame el correo del contacto");
+            //Se añade
+            arrayContactos.push({nombre: userNombre,
+                                 telefono: userTelefono,
+                                 correo: userCorreo});
             //Muestra por consola el primero y el ultimo contacto
-            console.log(arrayContactos[0].nombre + " / " + arrayContactos[0].telefono + " / " + arrayContactos[0].correo);
-            console.log(arrayContactos[arrayContactos.length-1].nombre + " / " + arrayContactos[arrayContactos.length-1].telefono + " / " + arrayContactos[arrayContactos.length-1].correo);
-
-
+            alert("Primer contacto: "+ arrayContactos[0].nombre + " / " + arrayContactos[0].telefono + " / " + arrayContactos[0].correo);
+            alert("Ultimo contacto: "+ arrayContactos[arrayContactos.length-1].nombre + " / " + arrayContactos[arrayContactos.length-1].telefono + " / " + arrayContactos[arrayContactos.length-1].correo);
+            
         </script>
     </body>
 </html>
