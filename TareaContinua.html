@@ -16,15 +16,28 @@
                                    {nombre:"Helen Richards",
                                    telefono: "08001111",
                                    correo: "libero@convallis.edu"}];
+            let bucle=true;                       
+            while(bucle){
+
+                                 
             let opcion = prompt("Mostrar el primer contacto (primero)\n"+
-                                "Mostrar el último contacto (último)\n"+
-                                "Añadir un nuevo contacto (nuevo)");
+                                "Mostrar el último contacto (ultimo)\n"+
+                                "Mostrar todos contactos (todos)\n"+
+                                "Añadir un nuevo contacto (nuevo)\n"+
+                                "Salir del programa(Salir)");
             switch(opcion){
                 case "primero":
                     alert("Primer contacto: "+ arrayContactos[0].nombre + " / " + arrayContactos[0].telefono + " / " + arrayContactos[0].correo);
                     break;
-                case "último":
+                case "ultimo":
                     alert("Ultimo contacto: "+ arrayContactos[arrayContactos.length-1].nombre + " / " + arrayContactos[arrayContactos.length-1].telefono + " / " + arrayContactos[arrayContactos.length-1].correo); 
+                    break;
+                case "todos":
+                    let contactos="";
+                    arrayContactos.forEach(function(contacto) {
+                        contactos+="Contacto: "+contacto.nombre + " / " + contacto.telefono + " / " + contacto.correo + "\n";
+                    });
+                    alert(contactos);
                     break;
                 case "nuevo": 
                     //Se piden datos del usuario
@@ -40,9 +53,16 @@
                     }          
                    // console.log("Ultimo contacto: "+ arrayContactos[arrayContactos.length-1].nombre + " / " + arrayContactos[arrayContactos.length-1].telefono + " / " + arrayContactos[arrayContactos.length-1].correo);          
                     break;
+                case "salir":
+                    alert("Saliendo...");
+                    bucle=false;
+                    break;
                 default:
+                    console.log(opcion);
+                    alert("Opcion incorrecta");
                     break;
                 }
+            } 
         </script>
     </body>
 </html>
