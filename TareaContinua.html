@@ -68,6 +68,12 @@
                     addNewContact(arrayContactos,userNombre,userTelefono,userCorreo);
                    // console.log("Ultimo contacto: "+ arrayContactos[arrayContactos.length-1].nombre + " / " + arrayContactos[arrayContactos.length-1].telefono + " / " + arrayContactos[arrayContactos.length-1].correo);          
                     break;
+                case "Ordenar contactos(ordenar)":
+                    prompt("Porque quieres ordenar?:\N"+ 
+                           "1(nombre)\N"+
+                           "2(correo)\N"+
+                           "3(nombre)")
+                    break;
                 case "salir":
                     alert("Saliendo...");
                     bucle=false;
