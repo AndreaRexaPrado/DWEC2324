@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Ejercicio Patrones</title>
+    </head>
+    <body>
+        <script>
+            const PATRONES=["00","101","ABC","HO"];
+            const CONT_PATRONES=[];
+            let frase = prompt("Dame la frase");
+            
+            function numeroPatrones(texto){
+                texto.toUpperCase();
+                //const ARR_TEXTO = texto.split("");
+
+                for(let i = 0;i<=PATRONES.length-1;i++){
+                    let j=0
+                    if(texto.indexOf(PATRONES[i])!=-1){
+                        CONT_PATRONES[i]=++j;                      
+                    }
+                    if(texto.lastIndexOf(PATRONES[i])!=-1&&texto.lastIndexOf(PATRONES[i])!=texto.indexOf(PATRONES[i])){
+                            CONT_PATRONES[i]=++j;
+                    } 
+                }
+                
+                for(let i = 0;i<=CONT_PATRONES.length-1;i++){
+                   
+                    
+                    console.log(PATRONES[i]+":"+CONT_PATRONES[i]);  
+                }
+            }
+            numeroPatrones(frase);
+        </script>
+    </body>
+</html>
