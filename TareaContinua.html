@@ -28,6 +28,45 @@
                                     correo: correo});
                     }    
             }
+            function ordArray(array,ord){
+
+                switch(ord){
+                        case "1":
+                        array.sort((a,b)=>{ 
+                            if(a.nombre.localeCompare(b.nombre)){
+                                return -1;
+                            }
+                            if(b.nombre.localeCompare(a.nombre)){
+                                return 1;
+                            }
+                            return 0;
+                        });
+                        break;
+                        case "2":
+                        array.sort((a,b)=>{ 
+                            if(a.telefono.localeCompare(b.telefono)){
+                                return -1;
+                            }
+                            if(b.telefono.localeCompare(a.telefono)){
+                                return 1;
+                            }
+                            return 0;
+                        });
+                        break;
+                        case "3":
+                        array.sort((a,b)=>{ 
+                            if(a.correo.localeCompare(b.correo)){
+                                return -1;
+                            }
+                            if(b.correo.localeCompare(a.correo)){
+                                return 1;
+                            }
+                            return 0;
+                        });
+                        break;
+                    }
+
+            }
             //Declara e inicializa las variables donde se almacenara toda la informacion (en esta version en una sola, en un array)
             let arrayContactos = [{nombre:"Maxwell Wright",
                                    telefono: "(0191)7196495",
@@ -48,6 +87,7 @@
                                 "Mostrar el último contacto (ultimo)\n"+
                                 "Mostrar todos contactos (todos)\n"+
                                 "Añadir un nuevo contacto (nuevo)\n"+
+                                "Ordenar agenda (ordernar)\n"+
                                 "Salir del programa(Salir)");
             switch(opcion){
                 case "primero":
@@ -68,11 +108,14 @@
                     addNewContact(arrayContactos,userNombre,userTelefono,userCorreo);
                    // console.log("Ultimo contacto: "+ arrayContactos[arrayContactos.length-1].nombre + " / " + arrayContactos[arrayContactos.length-1].telefono + " / " + arrayContactos[arrayContactos.length-1].correo);          
                     break;
-                case "Ordenar contactos(ordenar)":
-                    prompt("Porque quieres ordenar?:\N"+ 
-                           "1(nombre)\N"+
-                           "2(correo)\N"+
-                           "3(nombre)")
+                case "ordenar":
+                    let ord= prompt("Porque quieres ordenar?:\n"+ 
+                                    "1(nombre)\n"+
+                                    "2(correo)\n"+
+                                    "3(nombre)");
+                    ordArray(arrayContactos,ord);
+                    showAllContact(arrayContactos);
+
                     break;
                 case "salir":
                     alert("Saliendo...");
