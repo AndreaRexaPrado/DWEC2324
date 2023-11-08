@@ -36,7 +36,7 @@
             let prod1 = new Productos("Lavadora LG","Lavadora",6,130);
             let prod2 = new Productos("Batidora Nma","Batidora",2,70);
             let prod3 = new Productos("Aspiradora Logitech","Aspiradora",9,200);
-
+            //Se imprimen 
             console.log("Prod1: " + prod1.getInfo());
             console.log("Prod2: " + prod2.getInfo());
             console.log("Prod3: " + prod3.getInfo());
@@ -46,13 +46,14 @@
                 Productos.call(this,nom, cat, unidades, precio);
                 this.tamanio=tam;
             }
-            //Asignacion de la herecia, se crea el prototype de televisores apartir del prototype de productos
+            //Asignacion de la herecia, se crea el prototype de televisores a partir del prototype de productos
+            //Establece la cadena de prototype para que televisores herede los atributos y metodos de producto 
             Televisores.prototype = Object.create(Productos.prototype);
             
             //Cambio de la funcion de getInfo
             Televisores.prototype.getInfo = function(){
                     return this.nombre+" " + this.tamanio +"("+this.categoria+"):" + this.unidades +"x"+this.precio+"="+ this.valorTotal() + "€";
-                };
+            };
 
             let tv = new Televisores("TV LG","Televisores",7,300.50,"40”");
             console.log("tv: " + tv.getInfo());
