@@ -52,10 +52,10 @@
             
             //Cambio de la funcion de getInfo
             Televisores.prototype.getInfo = function(){
-                    return this.nombre+" " + this.tamanio +"("+this.categoria+"):" + this.unidades +"x"+this.precio+"="+ this.valorTotal() + "€";
+                    return this.nombre +" " + this.tamanio +"("+this.categoria+"):" + this.unidades +"x"+this.precio+"="+ this.valorTotal() + "€";
             };
 
-            let tv = new Televisores("TV LG","Televisores",7,300.50,"40”");
+            let tv = new Televisores("TV LG","Televisores",7,300.50,40);
             console.log("tv: " + tv.getInfo());
         
         </script>
