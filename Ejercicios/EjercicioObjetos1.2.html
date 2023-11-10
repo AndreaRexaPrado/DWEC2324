@@ -1,7 +1,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title><Objetos1 class="2"></Objetos1></title>
+        <title>Objectos1.2</title>
     </head>
     <body>
         <script>
@@ -71,9 +71,12 @@
                 return this.categoria + ": " + this.nombre+", unidades: " + this.precio + ", precio: " + this.precio +", pulgadas: "+ this.tamanio +", valor total: " + this.valorTotal();
             }
             let tv = new Televisores("TV LG","Televisores",7,300.50,40);
-            
+            Televisores.prototype.valueOf = function (){
+                return this.unidades;
+            }
             /*console.log("tv: " + tv.getInfo());
-            console.log("to String tv: " + tv.toString());*/
+            console.log("to String tv: " + tv.toString());
+            console.log("valueOf tv: " + tv.valueOf());*/
             
 
             //4.4
@@ -144,11 +147,12 @@
             });
 
             function prodLista(array){
-                console.log()
+                console.log("Listado de productos")
                 array.forEach(element => {
-                    C
+                    console.log("-"+element.toString());
                 });   
             }
+            prodLista(ARR_PROD);
         </script>
     </body>
 </html>               

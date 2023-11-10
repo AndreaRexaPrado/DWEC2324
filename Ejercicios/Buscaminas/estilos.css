@@ -1,0 +1,13 @@
+.contenido .botones{
+    display: flex;
+    justify-content: center;
+}
+.juego table{
+    display: flex;
+    justify-content: center;
+}
+
+.juego table button{
+    width: 25;
+    height: 25;
+}

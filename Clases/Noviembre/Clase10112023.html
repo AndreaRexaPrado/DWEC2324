@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Diferncias de for</title>
+    </head>
+    <body>
+       <p id="p"></p>
+        <script>
+          const ANIMALES = ["Perro","Gato","Leon","Gallo"];
+          let persona1= {
+                nombre:"Juan",
+                apellido:"Garcia",
+                ano:1815,
+                nombreCompleto: function() {
+                        return this.nombre + " " + this.apellido;
+                }
+            }
+          console.log(Object.keys(ANIMALES));
+          console.log(Object.values(ANIMALES));
+          console.log(Object.entries(ANIMALES));
+          console.log(Object.fromEntries(Object.entries(ANIMALES)));
+          /*console.log(Object.keys(persona1));
+          console.log(Object.values(persona1));
+          console.log(Object.entries(persona1));*/
+        </script>
+
+
+        
+</body>
+</html>
