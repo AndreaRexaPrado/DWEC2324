@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Ejercicio Codificacion Pe</title>
+    </head>
+    <body>
+        <script>
+            function encripPe(cadena){
+                const ENCRIP="pe";
+                const VOCALES = ["a","e","i","o","u","A","E","I","O","U"];
+                arrCadena = cadena.split("");
+                cadenaPe=ENCRIP;
+                for(let i = 0;i < arrCadena.length;i++){
+                    cadenaPe+=arrCadena[i];
+                    VOCALES.forEach(vocal => {
+                        if(arrCadena[i] == vocal && ){
+                            cadenaPe+=ENCRIP;                    
+                        }
+                    });
+                    
+                }
+                return cadenaPe;
+            }
+            console.log(encripPe("Autenticacion"));
+        </script>
+    </body>
+</html>
