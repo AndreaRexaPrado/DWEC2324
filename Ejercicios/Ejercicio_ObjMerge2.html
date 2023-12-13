@@ -18,7 +18,14 @@
             //2
             const promedio = mayores.reduce((acumulador,usu)=> acumulador + usu.edad,0)/mayores.length;
             console.log(promedio);        
- 
+
+            //3
+            const masJoven = mayores.reduce((min,usu)=> min< usu.edad?min:usu.nombre);
+            console.log(masJoven);
+            //4
+            const empiezanA = usuarios.filter((usu)=> usu.nombre.startsWith('A'));
+            console.log(empiezanA);
+
         </script>
     </body>
 </html>
