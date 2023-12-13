@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>Objetos Merge</title>
+    </head>
+    <body>
+        <script>
+            const usuarios = [
+                {id:1,nombre:'Juan', edad: 25},
+                {id:2,nombre:'Maria', edad: 30},
+                {id:3,nombre:'Pedro', edad: 20},
+                {id:4,nombre:'Ana', edad: 35},
+                {id:5,nombre:'Luisa', edad: 22},
+                {id:6,nombre:'Alberto', edad: 19},
+            ];
+            //1
+            const mayores=usuarios.filter((usu)=> usu.edad > 18);
+            console.log(mayores);
+            //2
+            const promedio = mayores.reduce((acumulador,usu)=> acumulador + usu.edad,0)/mayores.length;
+            console.log(promedio);        
+            //3
+            const masJoven = mayores.reduce((min,usu)=> min< usu.edad?min:usu.nombre);
+            console.log(masJoven);
+            //4
+            const empiezanA = usuarios.filter((usu)=> usu.nombre.startsWith('A'));
+            console.log(empiezanA);
+
+        </script>
+    </body>
+</html>
