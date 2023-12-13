@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>Ejercicio Funcional</title>
+    </head>
+    <body>
+        <script>
+            const numeros = [1, 2, 3, 4, 5];
+
+            const duplicados = numeros.map((num)=> num*2);
+            console.log(duplicados);
+            const pares= numeros.filter((num)=> num%2==0);
+            console.log(pares);
+            const suma = numeros.reduce((acumulador, numero) => acumulador + numero, 0);
+            console.log(suma);
+
+        </script>
+    </body>
+</html>
