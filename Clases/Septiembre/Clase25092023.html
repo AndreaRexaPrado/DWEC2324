@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Var let const</title>
+    </head>
+    <body>
+        <p id ="parrafo1"></p>
+        <p id ="parrafo2"></p>
+        <p id ="parrafo3"></p>
+        <script>
+            let animales = ["perro", "gato", "leon"];
+            alert(animales instanceof Object);
+            var nombre;
+            document.getElementById("parrafo1").innerHTML = nombre;
+
+            nombre = "Belen";
+
+            document.getElementById("parrafo2").innerHTML = nombre;
+            
+            var nacimiento = 1990;
+
+            document.getElementById("parrafo3").innerHTML = nacimiento;
+            alert(typeof(nacimiento));
+            alert(typeof(nombre));
+
+            let lista = [1,2,3,4,5,6];
+            
+            alert(typeof(lista));
+
+            var a = null;
+
+            alert(typeof(a));
+
+            
+        </script>
+    </body>
+</html>

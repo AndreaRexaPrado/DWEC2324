@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Ejercicio Codificacion Pe</title>
+    </head>
+    <body>
+        <script>
+            function encripPe(cadena){
+               
+                try{
+                    const patternRegex = new RegExp(`.(\d{1,})`, "gi");
+                    if(cadena.match(patternRegex)){
+                        throw new Error("La cadena no debe contener dígitos");
+                    }else{
+                        const ENCRIP="pe";
+                        const vocales ="aeiouAEIOU";
+                        cadenaPe=ENCRIP;
+                        for(let i = 0;i < cadena.length;i++){
+                            cadenaPe+=cadena[i];
+                            if (vocales.includes(cadena[i])) {
+                                // Verificar si hay dos vocales seguidas
+                                if (vocales.includes(cadena[i + 1])) {
+                                    i++;
+                                    cadenaPe+=cadena[i];
+                                    cadenaPe += "pe";
+                                }else{
+                                    cadenaPe += "pe";
+                                }
+                                
+                            }
+                        }
+                        if(vocales.includes(cadenaPe[cadenaPe.length-3])){
+                            cadenaPe = cadenaPe.slice(0,cadenaPe.length-2);
+                        }
+
+                        
+                        console.log( cadenaPe);
+                     
+                    }
+                }catch(err){
+                    console.error("Error:", err.message);
+                    //encripPe(pedirPalabra());
+                }
+            
+            }
+
+            function pedirPalabra(){
+                return prompt("Dame una palabra sin espacios ni tildes:");
+            }
+            encripPe(pedirPalabra());
+        </script>
+    </body>
+</html>

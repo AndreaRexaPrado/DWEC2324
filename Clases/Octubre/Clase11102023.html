@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Var let const</title>
+    </head>
+    <body>
+       <p id="p"></p>
+        <script>
+           /* const personas = [{nombre:"Pepe", edad:43},
+                              {nombre:"Pepa", edad:34},
+                              {nombre:"Pepin", edad:2}];    
+            
+            let personasOrdenado = personas.sort((persona1,persona2) => persona2.edad-persona1.edad);
+            //para ordenar cadenas toLocaleCompare
+            console.log(personas);
+            console.log(personasOrdenado);
+            function ordenarArray(){
+                let arrOrdenado = [];
+                for(i=0;i<=arguments.length-1;i++){
+                    arrOrdenado.push(Number(arguments[i]));
+                }
+                arrOrdenado.sort();
+                return arrOrdenado;
+            }
+
+            console.log(ordenarArray(4,6,"2",3,1,6,"4"));
+            console.log(ordenarArray(1,21,3));
+            let a = 7;
+            let b=5;
+            let auxA=a;
+
+            if((a-b)>0){
+                a = b;
+                b = auxA;
+            }
+            console.log("a: " + a + " b: " + b);
+            const matriz = [5,6];
+            const [first,last]= matriz;
+            console.log(matriz);
+
+            matriz = [5,4,3,2];
+            const [first,,third]= matriz;
+            console.log([first,third]);
+            let a = 7;
+            let b=5;
+            [b,a]= [a,b];
+            console.log("a: " + a + " b: " + b);
+            //Spread y rest
+            const debug = (param) => console.log(...param);//Desestructura todo sin importar el numero de paramentros que sean (...)
+            const matriz = [1,2,3,4,5,6,7,8,9,10];
+            debug(matriz);
+            const debug = (...param) => console.log(param);//Estructura todo sin importar el numero de paramentros que sean (...)
+            debug(1,2,3,4,5);
+            const elements = [5,4,3,2];
+            const [...rest]= elements;
+            console.log(rest);*/
+            const pareja = [3,4];
+            const matriz  = [1,2,pareja,5];
+            console.log(matriz);
+            
+
+
+        </script>
+
+        
+    </body>
+</html>

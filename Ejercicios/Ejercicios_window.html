@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Window Obj</title>
+    </head>
+    <body>
+        <p id="reloj"></p>
+        <script>
+
+            function ventana1(){
+                miVentana = window.open("","",width=500,height=200);
+                miVentana.moveTo(100,300);
+                miVentana.document.write("<h1>Hola</h1>");
+                miVentana.moveBy(100,300);
+                setTimeout(()=>{miVentana.close()},20000);
+            }
+            
+            function ventana2(){
+                vent2 = window.open("","",width=200,height=200);
+                vent2.resizeBy(150,200);
+                vent2.document.write("<h1>Hola</h1>");
+                vent2.document.write("<button onclick='(vent2)=>{vent2.close()}'>Cerrar</button>");
+
+            }
+        </script>
+        <button onclick="ventana1()">Ventana1</button>
+        <button onclick="setTimeout(ventana2,2000)">Ventana2</button>
+    </body>
+</html>
