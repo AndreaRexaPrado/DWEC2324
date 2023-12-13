@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Diferncias de for</title>
+    </head>
+    <body>
+       <p id="p"></p>
+        <script>
+           /* let fecha1 = new Date("Wed Mar 25 2015 9:15 GMT+1");
+            let fech2 = new Date("October 12 2023");
+            let fech3 = new Date("2023-05-12");
+            let fech4 = new Date("2023");
+
+            alert(fecha1);
+            alert(fech2);
+            alert(fech3);
+            alert(fech4);
+            let fechMili = new Date(864000000);
+            let fechLargo = new Date(2015,11,10,14,30,25);
+            let fechCorto = new Date(2015,11,10);
+            alert("fechMili "+fechMili);
+            alert("fechLargo "+fechLargo);
+            alert("fechCorto "+fechCorto);
+            var fecha = new Date();
+            alert("Fecha: " + fecha);
+            alert("Fecha: " + fecha);
+            alert("toString: " + fecha.toString());
+            alert("toUTCString: " + fecha.toUTCString());
+            alert("toDateString: " + fecha.toDateString());*/
+
+            //Ejercicio
+            let hoy = new Date(2034,7,5);
+            let mayo = new Date(1990,5,7);
+
+
+            let diferencia = Math.abs(mayo.getTime() - hoy.getTime());
+            let anios = (diferencia)/(1000*60*60*24*365);          
+           
+            let meses = calcularResto(anios,12);
+           
+            let dias = calcularResto(meses,30);
+           
+            let horas = calcularResto(dias,24);
+           
+            let mins = calcularResto(horas,60);
+           
+            let seg = calcularResto(mins,60);
+            const arr=[[Math.floor(anios),Math.floor(meses),Math.floor(dias)],[Math.floor(horas),Math.floor(mins),Math.floor(seg)]];
+            alert("Años: " + arr[0][0]+"\n"+
+                  "Meses: " + arr[0][1]+"\n"+
+                  "Dias: " + arr[0][2]+"\n"+
+                  "Horas: " + arr[1][0]+"\n"+
+                  "Mins: " + arr[1][1]+"\n"+
+                  "Segs: " + arr[1][1]+"\n");
+
+            function calcularResto(dato,producto){
+                return (dato%1)*producto;
+            }
+        </script>
+
+
+        
+    </body>
+</html>
