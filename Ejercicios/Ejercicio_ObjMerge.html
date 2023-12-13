@@ -15,8 +15,10 @@
             console.log(mayores);
             //2
             const duplEdad = mayores.map((usu)=> usu.edad*2);
-            
+            console.log(duplEdad);        
             //3
+            const sumaEdad = mayores.reduce((acumulador,valor)=> acumulador+valor.edad,0);
+            console.log(sumaEdad);  
         </script>
     </body>
 </html>
