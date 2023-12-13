@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Diferncias de for</title>
+    </head>
+    <body>
+       <p id="p"></p>
+        <script>
+           /* try{
+                alert('Inicio de sentencias de try');
+                Hola_caracola
+                alert('Fin de sentencias de try(Si / )');
+            }catch(err){
+                //alert('Un error ha ocurrido');
+                alert(err.name);
+                alert(err.menssage);
+                alert(err.stack);
+                alert(err);
+
+            }
+
+            function retirar(saldo, cantidad){
+                if(saldo<cantidad){
+                    return false;
+                }
+                return saldo-cantidad;
+            }
+            saldo = 300;
+            cantidad=10
+            resultado = retirar(saldo, cantidad);
+            if (resultado == false){
+                alert("saldo insuficiente");
+            }else{
+                alert(saldo=resultado);
+            }
+
+            function retirar(saldo, cantidad){
+                if(saldo<cantidad){
+                    throw "El saldo es insuficiente";
+                }
+                return saldo-cantidad;
+            }
+            saldo = 300;
+            cantidad=1000;
+            try{
+                let importe = prompt();
+                saldo = retirar(saldo, importe);
+                alert("Su operacion se ha realizado con exito, SALDO= " + saldo)
+            }catch(err){
+                alert(err);
+                //alert(err.menssage);
+            }*/
+            let persona1= {
+                nombre:"Juan",
+                apellido:"Garcia",
+                ano:1815,
+                nombreCompleto: function() {
+                        return this.nombre + " " + this.apellido;
+                }
+            }
+            
+            let persona2= new Object();
+                persona2.nombre ="Pedro";
+                persona2.apellido ="Perez",
+                persona2.ano =1891
+            
+            function Persona(nom,ape,an){
+                this.nombre =nom;
+                this.apellido =ape,
+                this.ano =an
+            }
+            
+            let juan = new Persona(persona1.nombre,persona1.apellido,persona1.ano);
+            let pedro = new Persona(persona2.nombre,persona2.apellido,persona2.ano);
+
+            alert(juan.nombre + " " + juan.apellido);
+            alert(pedro.nombre + " " + pedro.apellido);
+            alert(pedro["nombre"]);
+            alert(persona1.nombreCompleto());
+            for (const per in juan){
+                alert(per+"..."+juan[per]);
+            }
+        </script>
+
+
+        
+</body>
+</html>

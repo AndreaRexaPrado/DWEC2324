@@ -1,0 +1,158 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Objectos1.2</title>
+    </head>
+    <body>
+        <script>
+            function tvSamsung (nom,cat,unidades,precio){
+                this.nombre= nom;
+                this.categoria= cat;
+                this.unidades= unidades;
+                this.precio = precio;
+                this.valorTotal= function(){
+                    return this.unidades*this.precio;
+                }
+            }
+
+            let samsung = new tvSamsung("TV Samsung 42”","Televisores",4,345.95);
+            /*console.log("Samsung: "+samsung.valorTotal());*/
+
+            //Constructor de productos
+            function Productos(nom,cat,unidades,precio){
+                this.nombre= nom;
+                this.categoria= cat;
+                this.unidades= unidades;
+                this.precio = precio;
+                //Funcion que devuelve
+                this.valorTotal= function(){
+                    return this.unidades*this.precio;
+                };
+                this.getInfo= function(){
+                    return this.nombre+"("+this.categoria+"):" + this.unidades +"x"+this.precio+"="+ this.valorTotal() + "€";
+                }  
+                
+            }
+            Productos.prototype.toString = function (){
+                return this.categoria + ": " + this.nombre+", unidades: " + this.unidades + ", precio: " + this.precio + ", valor total: " + this.valorTotal();
+            }
+            Productos.prototype.valueOf = function (){
+                return this.unidades;
+            }
+            //Se crean productos
+            let prod1 = new Productos("Lavadora LG","Lavadora",6,130);
+            let prod2 = new Productos("Batidora Nma","Batidora",2,70);
+            let prod3 = new Productos("Aspiradora Logitech","Aspiradora",9,200);
+            //Se imprimen 
+            /*console.log("Prod1: " + prod1.getInfo());
+            console.log("Prod2: " + prod2.getInfo());
+            console.log("Prod3: " + prod3.getInfo());
+            //ToString
+            console.log("To String Prod1 -> " + prod1.toString());
+            console.log("To String Prod2 -> " + prod2.toString());
+            console.log("To String Prod3 -> " + prod3.toString());
+            //ValueOf
+            console.log("ValueOf Prod1 -> " + prod1.valueOf());
+            console.log("ValueOf Prod2 -> " + prod2.valueOf());
+            console.log("ValueOf Prod3 -> " + prod3.valueOf());*/
+            function Televisores (nom,cat,unidades,precio,tam){ 
+                //Herencia de los atributos de producto
+                Productos.call(this,nom, cat, unidades, precio);
+                this.tamanio=tam;
+                this.getInfo = function(){
+                    return this.nombre + " " + this.tamanio +" pulgadas ("+this.categoria+"):" + this.unidades +"x"+this.precio+"="+ this.valorTotal() + "€";
+                };
+            }
+
+            //Asignacion de la herecia, se crea el prototype de televisores a partir del prototype de productos
+            //Establece la cadena de prototype para que televisores herede los atributos y metodos de producto 
+            Televisores.prototype = Object.create(Productos.prototype);
+            Televisores.prototype.toString = function (){
+                return this.categoria + ": " + this.nombre+", unidades: " + this.precio + ", precio: " + this.precio +", pulgadas: "+ this.tamanio +", valor total: " + this.valorTotal();
+            }
+            let tv = new Televisores("TV LG","Televisores",7,300.50,40);
+            Televisores.prototype.valueOf = function (){
+                return this.unidades;
+            }
+            /*console.log("tv: " + tv.getInfo());
+            console.log("to String tv: " + tv.toString());
+            console.log("valueOf tv: " + tv.valueOf());*/
+            
+
+            //4.4
+            const ARR_PROD =[new Productos("Lavadora LG","Lavadora",6,130),
+                             new Productos("Batidora Nma","Batidora",2,70),
+                             new Productos("Aspiradora Logitech","Aspiradora",9,200),
+                             new Productos("PS5","Consola",10,400),
+                             new Productos("Patinete electrico LG","Patinete",2,150)
+                             ];
+
+            function prodOrdenPorNombre (array){
+                array.sort(function (a,b){
+                    return a.nombre.localeCompare(b.nombre);
+                });
+                return array;
+            }   
+
+            console.log("Ordenados por nombre"); 
+            prodOrdenPorNombre(ARR_PROD);
+            ARR_PROD.forEach(element => {
+                console.log(element.toString());
+            });
+
+            function prodOrdenPorPrecio (array){
+                array.sort(function (a,b){
+                    return a.precio - b.precio;
+                });
+                return array;
+            } 
+
+            console.log("Ordenados por precio"); 
+            prodOrdenPorPrecio(ARR_PROD);
+            ARR_PROD.forEach(element => {
+                console.log(element.toString());
+            });
+
+            function prodPrecioTotal (array){
+                array.sort(function (a,b){
+                    return a.valorTotal() - b.valorTotal();
+                });
+                return array;
+            } 
+            
+            console.log("Ordenados por precio total"); 
+            prodPrecioTotal(ARR_PROD);
+            ARR_PROD.forEach(element => {
+                console.log(element.toString());
+            });
+
+            function prodConMenosUnidades(array,num){
+                const ARR= [];
+              
+                array.forEach(element => {
+                    if(element.unidades < num){
+                        //console.log(element.toString());
+                        ARR.push(element);
+                        
+                    }
+                }); 
+                return ARR; 
+            }
+
+            
+            console.log("Productos con menos de 5 unidades"); 
+            const ARR2 = prodConMenosUnidades(ARR_PROD,5);
+            ARR2.forEach(element => {
+                console.log(element.toString());
+            });
+
+            function prodLista(array){
+                console.log("Listado de productos")
+                array.forEach(element => {
+                    console.log("-"+element.toString());
+                });   
+            }
+            prodLista(ARR_PROD);
+        </script>
+    </body>
+</html>               
