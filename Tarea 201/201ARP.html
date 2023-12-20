@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <title>Objetos Merge</title>
+    </head>
+    <body>
+        <p id="texto">Vas a copiar este texto</p>
+        <button onclick="copiarAlPortapapeles(document.getElementById('texto').innerHTML)">Copiar</button>
+        <script>
+            //1.- Obtener la fecha y hora actual
+            let fechActual= new Date();
+            let horaActual= fechActual.getHours();
+	        console.log("1. "+fechActual + " " + horaActual);
+
+            //2.- Mezclar dos Arrays
+            const arr1 = [1,2,3,4];
+            const arr2 = [5,6,7,8];
+            console.log("2. "+arr1.concat(arr2));
+
+            //3.- Borrar elementos repetidos en un array
+            const arr3 = [1,2,2,3,4,4,7,7,7];
+            let set = new Set(arr3);
+            let valores= "";
+            set.forEach(function(valor){valores+=valor + " "});
+            console.log("3. " + valores);
+
+            //4.- Generar un número aleatorio entre dos valores dados
+            let rand = Math.floor((Math.random()*10)+1);
+            console.log("4. " +rand);
+
+            //5.- Generar una cadena alfanumérica aleatoria
+            var randString=(Math.random()*100).toString(36);
+            console.log("5. " + randString);
+
+            //6.- Convertir un objeto en un array
+            let persona = {nombre:'Pepe',edad:23}
+            let arrObj= Object.entries(persona);
+            console.log(arrObj);
+
+            //7.-  Copiar texto al portapapeles
+            function copiarAlPortapapeles(texto) {
+            
+                navigator.clipboard.writeText(texto)
+                    .then(function() {
+                        console.log("Texto copiado al portapapeles: " + texto);
+                    })
+                    .catch(function(err) {
+                        console.error("Error al copiar al portapapeles: ", err);
+                    });
+            }
+
+            //8.- Comprobar si una propiedad existe IN un objeto
+            if ('edad' in persona) {
+                console.log('La propiedad edad existe en el objeto.');
+            }
+
+            //9.- Ordenar un Array en orden ascendente
+            const arr4 = [9,2,4,3,1,6,8,10,7];
+            arr4.sort((a,b)=>a-b)
+            console.log(arr4);
+            
+            //10.-  Obtener la longitud de un objeto
+            console.log("10. " + Object.keys(persona).length);
+        </script>
+    </body>
+</html>

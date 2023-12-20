@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>Objetos Merge</title>
+    </head>
+    <body>
+        <pre id="texto">
+Mientras (Corinto), en lágrimas deshecho,
+La sangre (de) su pecho vierte en (vano),
+Vende (Lice) a un decrépito indïano
+Por (cient) escudos la mitad del (lecho).
+¿Quién, (pues), se maravilla (deste) hecho,
+Sabiendo (que) halla ya paso más llano,
+La (bolsa) abierta, el rico (pelicano),
+Que el (pelícano) pobre, abierto el pecho?
+Interés, (ojos) de oro como (gato),
+Y (gato) de doblones, no Amor ciego,
+Que (leña) y plumas (gasta), cient arpones
+Le flechó de la (aljaba) de un talego.
+¿Qué (Tremecén) no desmantela un trato,
+Arrimándole al trato cient (cañones)?
+</pre>
+        <pre id="textoReves"></pre>
+        <button onclick="revesPalabrasAleatorias(document.getElementById('texto').innerHTML)">Reves</button>
+        <script>
+
+            function revesPalabrasAleatorias(texto){
+                
+                let arrTexto= texto.replace(',','').split(' ');
+                let texto1 = "";
+                arrTexto.forEach(elemento => {
+                    texto1+="["+elemento+"]";
+                });
+                document.getElementById('textoReves').innerHTML=texto1;
+                /*arrTexto.forEach(elemento => {
+                    if(elemento.includes('(')){
+                        console.log(elemento + "    si"  );
+                    }
+                });*/
+            }
+        </script>
+    </body>
+</html>
