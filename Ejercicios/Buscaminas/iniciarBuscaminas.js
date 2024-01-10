@@ -88,8 +88,8 @@ function colocarBombasTableroJS(){
         for (let j = 0; j < matriz[0].length; j++) {
           if (matriz[i][j] === 'M') {
             document.getElementById(i + "" + j).style.backgroundImage = "url('mina.png')";
-            document.getElementById(i + "" + j).style.backgroundSize = "cover";
-            document.getElementById(i + "" + j).style.color = "transparent";
+           /* document.getElementById(i + "" + j).style.backgroundSize = "cover";
+            document.getElementById(i + "" + j).style.color = "transparent";*/
           }else{
             document.getElementById(i + "" + j).innerText=matriz[i][j];
           }

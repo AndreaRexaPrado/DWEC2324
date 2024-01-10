@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Document Object Model</title>
+    <style>
+        .miClase {
+            color: red;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", inicio);
+
+        function inicio() {
+            document.getElementById("crearParrafo").addEventListener("click", crearParrafo);
+            document.getElementById("crearImagen").addEventListener("click", crearImagen);
+            document.getElementById("borrarUltimo").addEventListener("click", borrarUltimo);
+            document.getElementById("borrarPrimero").addEventListener("click", borrarPrimero);
+            document.getElementById("sustituirPrimVacio").addEventListener("click", sustituirPrimero);
+            document.getElementById("aniadirPunto").addEventListener("click", aniadirPunto);
+        
+        }
+
+        function crearParrafo(){
+           
+           let p = document.createElement("p");
+           let texto = document.createTextNode(document.getElementById("texto").value);
+           p.appendChild(texto);
+           p.setAttribute("class","miClase");
+           let div = document.getElementById("div1");
+           div.appendChild(p);
+        }
+        function crearImagen(){
+            let img = document.createElement("img");
+            let ruta = prompt("Dame la ruta");
+            let alt = prompt("Dame el texto alternativo");
+            img.src=ruta;
+            img.setAttribute("alt",alt);
+
+            let div = document.getElementById("div1");
+            div.appendChild(img);
+        }
+        
+        function borrarUltimo(){
+            let div = document.getElementById("div1");
+           
+            if(div.children.length > 0){
+                div.lastElementChild.remove();
+            }
+            
+        }
+
+        function borrarPrimero(){
+            let div = document.getElementById("div1");
+            
+            if(div.children.length > 0){
+                div.children[0].remove();
+            }
+            
+        }
+
+        function sustituirPrimero(){
+            let div = document.getElementById("div1");
+            if(div.children.length > 0){
+                let p = div.children[0];
+                
+                let texto = document.createTextNode(document.getElementById("texto").value);
+               
+                p.replaceChild(texto,p.childNodes[0]);
+            }
+        }
+        
+        function aniadirPunto(){
+            let div = document.getElementById("div1");
+            for(var i = 0; i<div.children.length;i++){
+                let p = div.children[i];
+                
+                if(p.textContent.endsWith('.')){
+                    let texto = p.textContent.substring(0,  p.textContent.length - 1);
+                 
+                    let textCorregido = document.createTextNode(texto)
+                    p.replaceChild(textCorregido,p.childNodes[0]);
+
+                }else{
+                    p.textContent+=".";
+                }
+            }
+        }
+      </script> 
+</head>
+
+<body>
+    <div id="div1"></div>
+    <br/>
+    <textarea id="texto"></textarea>
+    <br/>
+    <button id="crearParrafo">Crear parrafo</button>
+    <button id="crearImagen">Crear imagen</button>
+    <button id="borrarUltimo">Borrar ultimo</button>
+    <button id="borrarPrimero">Borrar primero</button>
+    <button id="sustituirPrimVacio">Sustituir primer párrafo por nuevo texto</button>
+    <button id="aniadirPunto">Añadir punto</button>
+
+</body>
+
+</html>

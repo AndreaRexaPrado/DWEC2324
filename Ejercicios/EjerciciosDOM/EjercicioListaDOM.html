@@ -1,0 +1,64 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div>
+            <p>Lista de la compra</p>
+            <ul id="list"></ul>
+        </div>
+        <input id="texto" type="text">
+        <button id="aniadir">Añadir</button>
+        
+        <script>
+        window.addEventListener("load", inicio);
+
+        function inicio() {
+            document.getElementById("aniadir").addEventListener("click", aniadirLista);
+        }
+
+        function aniadirLista(){
+            var lista = document.getElementById("list");
+            var texto = document.getElementById("texto");
+            if(lista.children.length <= 0){
+                let li = document.createElement("li");
+                let textLi = document.createTextNode(texto.value);
+                li.appendChild(textLi); 
+                lista.appendChild(li);
+            }else{
+                if (!contieneElemento(lista, texto)) {
+                   let arrList=[]
+            
+                    for(var i = 0;i<lista.children.length;i++){
+                        arrList[i]=lista.children[i].textContent;
+                        
+                    }
+                    arrList.push(texto.value);
+
+                    arrList.sort();
+                    while (lista.firstChild) {
+                        lista.removeChild(lista.firstChild);
+                    }
+
+                    for(var i = 0;i<=arrList.length-1;i++){
+                        let li = document.createElement("li");
+                        let textLi = document.createTextNode(arrList[i]);
+                        li.appendChild(textLi); 
+                        lista.appendChild(li);
+                    }
+                }
+            }
+            
+            function contieneElemento(lista, texto) {
+            // Verifica si el texto está presente en algún elemento de la lista
+            for (var i = 0; i < lista.children.length; i++) {
+                if (lista.children[i].textContent === texto) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        }
+        </script>
+    </body>
+</html>
