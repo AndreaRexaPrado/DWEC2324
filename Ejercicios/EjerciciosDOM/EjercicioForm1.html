@@ -1,0 +1,59 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <form method="post" action="validacion.php">
+            <label>Nombre:</label><input type="text" size="30" name="inName"><br>
+            <label>Apellidos:</label><input type="text" size="30" name="inApe"><br>
+            <label>DNI:</label><input type="text" size="9" name="inDNI"><br>
+            <label>Sexo:</label><br>
+            <input type="radio" name="sexo" value="M" checked>Hombre<br>
+            <input type="radio" name="sexo" value="F" >Mujer<br>
+            <label>Incluir mi foto:</label><input type="text" name="inFotoTx">
+            <input type="file" name="inFoto" value="Examinar..." accept=".jpg,.png"><br>
+            <input type="checkbox" name="publi" checked>Enviar publicidad<br>
+            <select id="aprobar" >
+                <option value="10">Saco 10 en DWEC</option>
+                <option value="9">Saco 9 en DWEC</option>
+                <option value="8">Saco 8 en DWEC</option>
+                <option id="new" value="new">Crear una nuevo</option>
+
+            </select><br>
+            <input type="submit" value="Guardar cambios" name ="btnSubmit">
+            <input type="reset" value="Borrar los datos introducidos" name ="btnReset">
+
+        </form> 
+        <script>
+            window.addEventListener("load", inicio);
+
+            function inicio() {
+            	var elemento=document.getElementById("aprobar");
+                /*for(i=0;i<elemento.options.length;i++){
+                    alert('Valor de la opcion '+elemento.options[i].value);
+                }
+                var sel=elemento.selectedIndex;
+                alert('El valor de la opcion seleccionada es '+elemento.options[sel].value+' y el texto asociado es '+elemento.options[sel].text);
+                // Para cambiar  el índice seleccionado:
+                elemento.selectedIndex=0;*/
+                elemento.addEventListener("change",selectCambio);
+
+                function selectCambio(){
+                    var selectedOption = this.options[this.selectedIndex];
+                    if(selectedOption.value="new"){
+                        
+                        var newEleText =prompt("Dame el nuevo elemento: ");
+                        var newElem = document.createElement("option");
+                        
+                        newElem.value = newEleText;
+                        newElem.text = newEleText;
+                        this.insertBefore(newElem,selectedOption);
+                    }else{
+                        alert("Has seleccionado " + selectedOption.text);
+                    }
+                }
+                
+            }
+        </script>
+    </body>
+</html>

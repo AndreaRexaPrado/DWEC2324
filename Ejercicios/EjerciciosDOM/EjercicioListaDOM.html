@@ -1,64 +1,101 @@
 <html>
-    <head>
+<head>
+    <style>
+        li{
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>Lista de la compra</p>
+        <ul id="list"></ul>
+    </div>
+    <input id="texto" type="text">
+    <button id="aniadir">Añadir</button>
+    <button id="borrar">Borrar</button>
 
-    </head>
-    <body>
-        <div>
-            <p>Lista de la compra</p>
-            <ul id="list"></ul>
-        </div>
-        <input id="texto" type="text">
-        <button id="aniadir">Añadir</button>
-        
-        <script>
+    <script>
         window.addEventListener("load", inicio);
 
         function inicio() {
             document.getElementById("aniadir").addEventListener("click", aniadirLista);
+            document.getElementById("borrar").addEventListener("click", borrarDeLista);
         }
 
-        function aniadirLista(){
+        function borrarDeLista() {
+            var lista = document.getElementById("list");
+
+            // Obtener todos los elementos seleccionados para borrar
+            var elementosSeleccionados = document.querySelectorAll('input[type="checkbox"]:checked');
+
+            // Eliminar cada elemento seleccionado
+            elementosSeleccionados.forEach(function (elemento) {
+                lista.removeChild(elemento.parentNode);
+            });
+
+            // Ordenar la lista después de borrar
+            ordenarLista(lista);
+        }
+
+        function aniadirLista() {
             var lista = document.getElementById("list");
             var texto = document.getElementById("texto");
-            if(lista.children.length <= 0){
+            
+            if (!contieneElemento(lista, texto.value)) {
                 let li = document.createElement("li");
+
+                // Crear un checkbox para cada elemento de la lista
+                let checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+
                 let textLi = document.createTextNode(texto.value);
-                li.appendChild(textLi); 
+
+                // Añadir el checkbox y el texto al elemento li
+                li.appendChild(checkbox);
+                li.appendChild(textLi);
+
+                // Añadir el elemento li a la lista
                 lista.appendChild(li);
-            }else{
-                if (!contieneElemento(lista, texto)) {
-                   let arrList=[]
-            
-                    for(var i = 0;i<lista.children.length;i++){
-                        arrList[i]=lista.children[i].textContent;
-                        
-                    }
-                    arrList.push(texto.value);
-
-                    arrList.sort();
-                    while (lista.firstChild) {
-                        lista.removeChild(lista.firstChild);
-                    }
-
-                    for(var i = 0;i<=arrList.length-1;i++){
-                        let li = document.createElement("li");
-                        let textLi = document.createTextNode(arrList[i]);
-                        li.appendChild(textLi); 
-                        lista.appendChild(li);
-                    }
-                }
+                // Ordenar la lista después de borrar
+                ordenarLista(lista);
+            } else {
+                alert("Ese elemento ya está en la lista");
             }
-            
-            function contieneElemento(lista, texto) {
+
+            texto.value = "";
+        }
+        
+        function contieneElemento(lista, texto) {
             // Verifica si el texto está presente en algún elemento de la lista
             for (var i = 0; i < lista.children.length; i++) {
                 if (lista.children[i].textContent === texto) {
                     return true;
                 }
             }
-            return false;
-        }
-        }
-        </script>
-    </body>
+                return false;
+            }
+        
+
+        function ordenarLista(lista) {
+                // Obtener todos los elementos de la lista y convertirlos a un array
+                var arrList = Array.from(lista.children);
+
+                // Ordenar el array alfabéticamente
+                arrList.sort(function(a, b) {
+                    return a.textContent.localeCompare(b.textContent);
+                });
+
+                // Limpiar la lista
+                while (lista.firstChild) {
+                    lista.removeChild(lista.firstChild);
+                }
+
+                // Agregar los elementos ordenados de nuevo a la lista
+                arrList.forEach(function(elemento) {
+                    lista.appendChild(elemento);
+                });
+            }
+    </script>
+</body>
 </html>

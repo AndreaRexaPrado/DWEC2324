@@ -11,3 +11,15 @@
     width: 25;
     height: 25;
 }
+
+.celda-tapada {
+    background-color: #ccc; /* Puedes ajustar el color de fondo según tus preferencias */
+    color: transparent; /* Texto transparente para ocultar números en celdas reveladas */
+    cursor: pointer; /* Cambia el cursor al pasar sobre celdas tapadas */
+  }
+
+  .mina-oculta {
+    background-image: url(''); /* Ruta de la imagen para celda oculta con mina */
+    background-size: cover;
+    color: transparent;
+  }
