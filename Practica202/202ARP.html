@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>Practica 202</title>
+        <style>
+
+            .contenido {
+
+                display: flex;
+                justify-content: center;
+            }
+            form{
+                
+                text-align: center;
+
+            }
+        </style>
+    </head>
+    <body>
+        <div class="contenido">
+        <form>
+            <fieldset>
+                <legend>Datos personales</legend>
+                <label>Introduce tu nombre </label>
+                <input type="text" id="nombre"><br>
+                <label>Introduce tu NIF </label>
+                <input type="text" id="nif"><br>
+                <label>Mensaje</label><br>
+                <textarea id="mensaje" rows="7" cols="150"></textarea>
+            </fieldset>
+            <label>Elige un color</label><br>
+            <input type="radio" name="color" value="rojo"> Rojo<br>
+            <input type="radio" name="color" value="verde"> Verde<br>
+            <input type="radio" name="color" value="azul"> Azul<br>
+            <label>Selecciona una asignatura</label>
+            <select>
+                <option value="dwes">DWES</option>
+                <option value="dwec">DWEC</option>
+                <option value="diw">DIW</option>
+                <option value="daw">DAW</option>
+                <option value="ingles">Ingles</option>
+            </select><br>
+            <label>Selecciona los dias con disponibilidad</label><br>
+            <input type="checkbox" name="dia" value="Lunes"> Lunes<br>
+            <input type="checkbox" name="dia" value="Martes"> Martes<br>
+            <input type="checkbox" name="dia" value="Miercoles"> Miercoles<br>
+            <input type="checkbox" name="dia" value="Jueves"> Jueves <br>
+            <input type="checkbox" name="dia" value="Viernes"> Viernes<br>
+        </form>
+        </div>
+    </body>
+</html>

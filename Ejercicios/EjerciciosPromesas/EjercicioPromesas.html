@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <title>web storage</title>
+    </head>
+    <body> 
+        <script>
+            const datos=[{
+                id:1,
+                nombre:"Juan",
+                edad:23,
+            },
+            {
+                id:2,
+                nombre:"Pepe",
+                edad:18,
+            },
+            {
+                id:3,
+                nombre:"Ana",
+                edad:67,
+            }];
+
+            function getDatos(){
+                return datos;
+            }
+            console.log(getDatos());
+
+
+            function getDatosSinc(){
+                setTimeout(getDatos,3000)
+            }
+
+            console.log(getDatosSinc());
+
+            
+            /*function getDatosProm(){
+                return new Promise((resolve,reject)=>{
+                    setTimeout
+                    resolve(datos),4000})
+            }
+            console.log(getDatosProm());*/
+
+
+            function getDatosProm(){
+                return new Promise((resolve,reject)=>{
+                    setTimeout(()=>{
+                    resolve(datos)},8000)
+                })
+            }
+            getDatosProm()
+                .then((datos)=>console.log(datos))
+                //.catch();
+            async function asyawt(){
+                const misDatos = await getDatosProm();
+                console.log(misDatos);
+            }
+            asyawt();
+
+            async function asyawt(){
+                try{
+                    const misDatos = await getDatosProm();
+                    console.log(misDatos);
+                }catch(err){
+                    console.log(err);
+
+                }
+            }
+            asyawt();
+            
+        </script>
+    </body>
+</html>    

@@ -1,5 +1,6 @@
 
 let matriz=[];
+let matrizAux=[];
 let tablero = document.getElementById("tablero");
 let numMinas=calcularNumMinas(9,9);
 
@@ -17,16 +18,20 @@ function dibujarTableroHTML(ancho,alto){
     for(let i=0;i< alto;i++) {
         let row = tabla.insertRow(i)
         matriz[i]= new Array(ancho);
+        matrizAux[i]= new Array(ancho);
 
         for(let j=0;j< ancho;j++) {
             let cell = row.insertCell(j);
             cell.innerHTML="<button id='"+i+j+"'></button>"
             matriz[i][j]=0;
+            matrizAux[i][j]="<button id='"+i+j+"'></button>"
         }
         
     }
 
     console.log(matriz);
+    console.log("MatrizAux");
+    console.log(matrizAux);
     tablero.appendChild(tabla);
 }
 
@@ -65,10 +70,10 @@ select.addEventListener("change", function(){
   }
 });
 function calcularNumMinas(x,y){
-    return Math.floor((x*y)*0.15);
+    return Math.floor((x*y)*0.2);
 }
 function colocarMinasMatriz(x,y){
-    let probabilidadM = 0.2;
+    let probabilidadM = 0.3;
     let cont = 0;
     for (let i = 0; i < y; i++) {
         for (let j = 0; j < x; j++) {
@@ -84,8 +89,8 @@ function colocarMinasMatriz(x,y){
 }
 
 function colocarBombasTableroJS(){
-    for (let i = 0; i < matriz.length; i++) {
-        for (let j = 0; j < matriz[0].length; j++) {
+    for (let i = 0; i <= matriz.length-1; i++) {
+        for (let j = 0; j <= matriz[0].length-1; j++) {
           if (matriz[i][j] === 'M') {
             document.getElementById(i + "" + j).style.backgroundImage = "url('mina.png')";
            /* document.getElementById(i + "" + j).style.backgroundSize = "cover";

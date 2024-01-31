@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>Promesas</title>
+    </head>
+    <body> 
+        <div id="msg"></div>
+        <button type="button" id="crearPromesa">Crear promesa</button>
+        <script>
+            var cont = 0;
+            window.onload= inicio;
+            function inicio(){
+                document.getElementById("crearPromesa").addEventListener("click", probarPromise);
+
+            }
+
+            function probarPromise(){
+                let contlocal =  ++cont;
+                let div = document.getElementById("msg");
+                div.insertAdjacentHTML("beforeend", contlocal+")Empiezo el codigo sincrono<br>");
+                let miPromesa = new Promise((resolve,reject)=>{
+                    div.insertAdjacentHTML("beforeend",contlocal+")Dentro de la promesa,antes del timeout. Empieza el código asincrono<br>");
+                    setTimeout(()=>{resolve(cont)},Math.random() *4000 +1000);
+
+                });
+                
+                miPromesa
+                .then((cont)=>  div.insertAdjacentHTML("beforeend",contlocal+")Dentro del .then. Codigo asincrono terminado<br>"));
+
+                div.insertAdjacentHTML("beforeend",contlocal+")Codigo despues del .then. Codigo sincrono terminado<br>");
+                
+            }
+
+        </script>
+    </body>
+</html>    

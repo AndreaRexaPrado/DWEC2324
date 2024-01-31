@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <title>Cookies</title>
+    </head>
+    <body>
+        
+        <button type ="button" id="verTodas">Ver todas las cookies</button>
+        <button type ="button" id="crearCookie1">Crear cookie 1</button>
+        <button type ="button" id="crearCookie2">Crear cookie 2</button>
+        <button type ="button" id="borrarCookie1">Borrar cookie 1</button>
+        <button type ="button" id="borrarCookie2">Borrar cookie 2</button>
+        <script>
+            window.onload = iniciar;
+
+            function iniciar(){
+                document.getElementById("verTodas").addEventListener('click',verTodas,false);
+                document.getElementById("crearCookie1").addEventListener('click',crearCookie,false);
+                document.getElementById("crearCookie2").addEventListener('click',crearCookie,false);
+                document.getElementById("borrarCookie1").addEventListener('click',borrarCookie,false);
+                document.getElementById("borrarCookie2").addEventListener('click',borrarCookie,false);
+            }
+
+            function verTodas(){
+                alert(document.cookie);
+            }
+
+            function crearCookie(e){
+                console.log(e.target.id);
+                switch(e.target.id){
+                    case "crearCookie1":
+                        console.log("crearCookie1");
+                        
+                        document.cookie="nombre=Pepe;expires=Thu,01 Feb 2024 00:00:01 GMT;"
+                        break;
+                    case "crearCookie2":
+                        console.log("crearCookie2");
+                        document.cookie="ape=Fernandez;expires=Thu,01 Feb 2024 00:00:01 GMT;"
+                        break;
+                }
+            }
+            function borrarCookie(e){
+                switch(e.target.id){
+                    case "borrarCookie1":
+                        document.cookie="nombre=;expires=Thu,01 Jan 1970 00:00:01 GMT;"
+                        break;
+                    case "borrarCookie2":
+                        document.cookie="ape=;expires=Thu,01 Jan 1970 00:00:01 GMT;"
+                        break;
+                }
+            }
+
+            /*document.cookie="usuario = Andrea;"
+            document.cookie="sexo = Mujer;"
+
+            var miCookie = document.cookie;
+            alert(miCookie);
+
+            document.cookie="usuario=;expires=Thu,01 Jan 1970 00:00:01 GMT;"
+            alert(miCookie);*/
+        </script>
+    </body>
+</html>

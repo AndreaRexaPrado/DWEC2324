@@ -1,0 +1,42 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <form method="post" action="mailto:andrea_rexa@outlook.es">
+            <label>Nombre:</label><input type="text" size="30" name="inName"><br>
+            <label>Apellidos:</label><input type="text" size="30" name="inApe"><br>
+            <label>DNI:</label><input type="text" size="9" name="inDNI"><br>
+            <label>Sexo:</label><br>
+            <input type="radio" name="sexo" value="M" checked>Hombre<br>
+            <input type="radio" name="sexo" value="F" >Mujer<br>
+            <label>Incluir mi foto:</label><input type="text" name="inFotoTx">
+            <input type="file" name="inFoto" value="Examinar..." accept=".jpg,.png"><br>
+            <input type="checkbox" name="publi" checked>Enviar publicidad<br>
+            <input type="submit" value="Guardar cambios" id ="btnSubmit">
+            <input type="reset" value="Borrar los datos introducidos" name ="btnReset">
+
+        </form> 
+        <script>
+            window.addEventListener("load", inicio);
+
+            function inicio() {
+                let form = document.querySelector('form');
+
+                form.addEventListener('submit', (event) => {
+
+                    if(confirm('¿Quieres enviar el formulario?')){
+                        alert('Formulario enviado');
+                        form.submit();
+                    }else{
+                        event.preventDefault();
+                    }
+                });
+                
+               
+                form.addEventListener('reset',function() {inputs[0].focus()});
+            }
+
+        </script>
+    </body>
+</html>

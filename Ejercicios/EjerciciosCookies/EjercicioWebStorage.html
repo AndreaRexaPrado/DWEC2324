@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>web storage</title>
+    </head>
+    <body>       
+        <button type ="button" id="inc">Incrementar</button>
+        <button type ="button" id="dec">Decrementar</button>
+        <button type ="button" id="log">Log out</button>
+        <p id="bienvenida"></p>
+        <p id="Contador"></p>
+    </body>
+
+    <script>
+        if(typeof(Storage)!=="undefined"){
+          
+
+            alert("El navegador si soporta web storge");
+            if(localStorage.getItem('usuario')!=null){
+                document.getElementById('bienvenida').innerHTML="Bienvenide de nuevo " + localStorage.getItem('usuario') + " !"
+            }else{
+                localStorage.setItem("usuario",prompt('Cual es tu nombre?'));
+                document.getElementById('bienvenida').innerHTML="Bienvenide " + localStorage.getItem('usuario') + " !"
+           
+            }
+
+            if(sessionStorage.getItem("contador")!=null){
+               
+                document.getElementById("Contador").innerHTML="Contador: " + sessionStorage.getItem("contador"); 
+
+                document.getElementById("inc").addEventListener("click",()=>{
+                    sessionStorage.setItem("contador",Number(sessionStorage.getItem("contador"))+1);
+                    document.getElementById("Contador").innerHTML="Contador: " + sessionStorage.getItem("contador"); 
+                
+                });
+
+                document.getElementById("dec").addEventListener("click",()=>{
+                    sessionStorage.setItem("contador",Number(sessionStorage.getItem("contador"))-1);
+                    document.getElementById("Contador").innerHTML="Contador: " + sessionStorage.getItem("contador"); 
+                
+                });
+
+                document.getElementById("log").addEventListener("click",()=>{
+                    localStorage.removeItem("usuario");
+                    location.reload();
+                
+                });
+            }else{
+                sessionStorage.setItem("contador",0);
+            }
+
+
+        }
+    </script>
+</html>        

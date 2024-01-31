@@ -1,0 +1,27 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <form method="post" action="validacion.php">
+            <p id="texto">Maquina apagada</p>
+            <input type="button" value="Encender maquina" id="btn" onclick="cambiarTexto()">
+        </form> 
+        <script>
+            function cambiarTexto(){
+                let txt = document.getElementById('texto');
+                let btn = document.getElementById('btn');
+                
+
+                if(txt.textContent === "Maquina apagada"){
+                    txt.textContent = "Maquina encendida";
+                    btn.value="Apagar maquina"
+
+                }else{
+                    txt.textContent = "Maquina apagada";
+                    btn.value="Encender maquina" 
+                }
+            }  
+        </script>
+    </body>
+</html>

@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>web storage</title>
+    </head>
+    <body> 
+        <script>
+           setTimeout(function(){
+                console.log("Ejecuto la funcion del ejemplo 1)")
+           },7000);
+
+           setTimeout(()=> {console.log("Esta parte es asincrona"),4000});
+           console.log("Esta parte es sincrona");
+
+
+           let miPromesa = new Promise((resolve,reject)=>{
+                setTimeout(function(){
+                    resolve(console.log("Promesa ejecutada en 3 seg"))
+                },3000)
+           });
+           let realizado=true;
+           const tareaRealizada=new Promise((resolve,reject)=>{
+                if(realizado){
+                    const trabajoCompletado="La tarea se ha completado";
+                    resolve(trabajoCompletado);
+                    console.log(trabajoCompletado);
+                }else{
+                    const trabajoFallido="La tarea no se ha completado";
+                    reject(trabajoFallido);
+                    console.log(trabajoFallido);
+                }
+           });
+
+           const miPromesa2 = new Promise((resolve,reject)=>{
+                const numero = Math.floor(Math.random()*10)
+                setTimeout(()=>{numero>5?resolve(numero):reject(new Error("Se ha obtenido un numero menor que 5"))
+                },5000)
+           });
+
+           miPromesa2
+                .then((numero)=>console.log(numero))
+                .catch((error)=>console.log(error));
+        </script>
+    </body>
+</html>    

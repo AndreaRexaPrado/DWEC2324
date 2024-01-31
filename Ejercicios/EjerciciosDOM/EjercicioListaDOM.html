@@ -20,19 +20,13 @@
 
         function inicio() {
             document.getElementById("aniadir").addEventListener("click", aniadirLista);
-            document.getElementById("borrar").addEventListener("click", borrarDeLista);
+          
         }
 
         function borrarDeLista() {
             var lista = document.getElementById("list");
 
-            // Obtener todos los elementos seleccionados para borrar
-            var elementosSeleccionados = document.querySelectorAll('input[type="checkbox"]:checked');
-
-            // Eliminar cada elemento seleccionado
-            elementosSeleccionados.forEach(function (elemento) {
-                lista.removeChild(elemento.parentNode);
-            });
+            lista.removeChild(this);
 
             // Ordenar la lista después de borrar
             ordenarLista(lista);
@@ -44,23 +38,27 @@
             
             if (!contieneElemento(lista, texto.value)) {
                 let li = document.createElement("li");
-
-                // Crear un checkbox para cada elemento de la lista
-                let checkbox = document.createElement("input");
-                checkbox.type = "checkbox";
-
-                let textLi = document.createTextNode(texto.value);
-
-                // Añadir el checkbox y el texto al elemento li
-                li.appendChild(checkbox);
+                li.addEventListener("click",borrarDeLista);
+                let cant = prompt('Dame cantidad de ' + texto.value+": ");
+                let textLi = document.createTextNode(texto.value + " x " + cant);
                 li.appendChild(textLi);
+                
 
                 // Añadir el elemento li a la lista
                 lista.appendChild(li);
-                // Ordenar la lista después de borrar
+                // Ordenar la lista 
                 ordenarLista(lista);
             } else {
                 alert("Ese elemento ya está en la lista");
+                if(confirm("Quieres añadir una unidad a " + texto.value)+" "){
+                    for (var i = 0; i < lista.children.length; i++) {
+                        let textoli = lista.children[i].textContent;
+                        if (textoli.substring(0,textoli.indexOf('x')-1) === texto.value) {
+                            let cant = parseInt(textoli.substring(textoli.length-1));
+                            lista.children[i].textContent= texto.value + " x " + (cant+1);
+                        }
+                    }
+                };
             }
 
             texto.value = "";
@@ -69,7 +67,8 @@
         function contieneElemento(lista, texto) {
             // Verifica si el texto está presente en algún elemento de la lista
             for (var i = 0; i < lista.children.length; i++) {
-                if (lista.children[i].textContent === texto) {
+                let textoli = lista.children[i].textContent;
+                if (textoli.substring(0,textoli.indexOf('x')-1) === texto) {
                     return true;
                 }
             }
