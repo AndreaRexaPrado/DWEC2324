@@ -32,19 +32,40 @@
             <input type="radio" name="color" value="verde"> Verde<br>
             <input type="radio" name="color" value="azul"> Azul<br>
             <label>Selecciona una asignatura</label>
-            <select>
+            <select name="asig">
                 <option value="dwes">DWES</option>
                 <option value="dwec">DWEC</option>
                 <option value="diw">DIW</option>
                 <option value="daw">DAW</option>
                 <option value="ingles">Ingles</option>
             </select><br>
+            <label>Selecciona un curso academico</label>
+            <select name="curso">
+                <option value="20">20-21</option>
+                <option value="21">21-22</option>
+                <option value="22">22-23</option>
+                <option value="23">23-24</option>
+                <option value="aniadir">Añadir</option>
+            </select><br>
             <label>Selecciona los dias con disponibilidad</label><br>
-            <input type="checkbox" name="dia" value="Lunes"> Lunes<br>
-            <input type="checkbox" name="dia" value="Martes"> Martes<br>
-            <input type="checkbox" name="dia" value="Miercoles"> Miercoles<br>
-            <input type="checkbox" name="dia" value="Jueves"> Jueves <br>
-            <input type="checkbox" name="dia" value="Viernes"> Viernes<br>
+            <input type="checkbox" name="l" value="Lunes"> Lunes<br>
+            <input type="checkbox" name="m" value="Martes"> Martes<br>
+            <input type="checkbox" name="x" value="Miercoles"> Miercoles<br>
+            <input type="checkbox" name="j" value="Jueves"> Jueves <br>
+            <input type="checkbox" name="v" value="Viernes"> Viernes<br>
+            <input type="checkbox" name="todos" value="todos"> Todos<br>
+        
+            <label>Selecciona el dia preferente</label>
+            <select>
+                <option value="Lunes" selected>Lunes</option>
+                <option value="Martes">Martes</option>
+                <option value="Miercoles">Miercoles</option>
+                <option value="Jueves">Jueves</option>
+                <option value="Viernes">Viernes</option>
+            </select><br>
+            <button type="submit" id="enviar">Haz clic para enviar la informacion</button>
+            <button type="reset" id="reset">Comenzar a rellenar de nuevo</button>
+            <button type="button" id="google">Haz clic sobre mi</button>
         </form>
         </div>
     </body>
