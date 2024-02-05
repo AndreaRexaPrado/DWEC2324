@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+</head>
+<body>
+    <div id = "mensaje"></div>
+        <script>
+
+            window.addEventListener("load",function(){
+                class Coche{
+                    constructor(mar){
+                        this._marca=mar; //Guion para distinguir que es una propiedad NO UN METODO
+                    }
+
+                    anuncio(){
+                        return "Ha llegado el coche de " + this._marca; 
+                    }
+
+                    //Getters y setters
+
+                    get marca(){
+                        return this._marca;
+                    }
+
+                    set marca(mar){
+                        this._marca = mar;
+
+                    }
+                }
+                //Herencia
+                class Modelo extends Coche{
+                    constructor(marca,modelo){
+                        super(marca);
+                        this._modelo=modelo;
+                    }
+
+
+                    anuncioCompleto(){
+                        return this.anuncio() + " el modelo " + this._modelo;
+                    }
+
+                    get modelo(){
+                        return this._modelo;
+                    }
+
+                    set modelo(mod){
+                        this._modelo = mod;
+
+                    }
+
+                }
+                let c1 = new Modelo("Hyundai","VBE");
+                console.log(c1.anuncioCompleto());
+                console.log(c1.modelo);
+                console.log(c1.marca);
+                c1.marca="LDLA";
+                c1.modelo="LSDAASD";
+                console.log(c1.modelo);
+                console.log(c1.marca);
+
+                
+            });
+
+
+        </script>
+</body>
+</html>

@@ -1,6 +1,8 @@
 
 let matriz=[];
 let matrizAux=[];
+let matrizAux2=[];
+let ancho = 9;
 let tablero = document.getElementById("tablero");
 let numMinas=calcularNumMinas(9,9);
 
@@ -29,9 +31,9 @@ function dibujarTableroHTML(ancho,alto){
         
     }
 
-    console.log(matriz);
+    /*console.log(matriz);
     console.log("MatrizAux");
-    console.log(matrizAux);
+    console.log(matrizAux);*/
     tablero.appendChild(tabla);
 }
 
@@ -46,25 +48,27 @@ select.addEventListener("change", function(){
         numMinas=calcularNumMinas(9,9);  
         colocarMinasMatriz(9,9);
         calcularNumerosAlrededor();
+        ancho = 9;
         colocarBombasTableroJS();
         console.log(numMinas);
-        
         break;
     case "op2":
         dibujarTableroHTML(16,16);
         numMinas=calcularNumMinas(16,16); 
         colocarMinasMatriz(16,16);
         calcularNumerosAlrededor();
-        colocarBombasTableroJS();
+        ancho = 16;
 
+        colocarBombasTableroJS();
         break;
     case "op3":
         dibujarTableroHTML(30,16);
         numMinas=calcularNumMinas(30,16);  
         colocarMinasMatriz(30,16);
         calcularNumerosAlrededor();
+        ancho = 31;
         colocarBombasTableroJS();
-
+        
         break;
 
   }
@@ -87,20 +91,44 @@ function colocarMinasMatriz(x,y){
         }
     }
 }
+function colocarBombasTableroJS() {
+  
+  for (let i = 0; i < matriz.length; i++) {
+      matrizAux2[i]= new Array(matriz[0].length);
+      for (let j = 0; j < matriz[0].length; j++) {
+        
 
-function colocarBombasTableroJS(){
+          const cellElement = document.getElementById(i + "" + j);
+          
+          if (matriz[i][j] === 'M') {
+              // Set background image for mines
+              cellElement.style.backgroundImage = "url('mina.png')";
+              cellElement.style.backgroundSize = "cover";
+              cellElement.style.color = "transparent";
+          } else {
+              // Set text content for non-mines
+              cellElement.innerText = matriz[i][j];
+          }
+          matrizAux2[i][j]= cellElement;
+      }
+  }
+console.log("MatrizAux2");
+console.log(matrizAux2);
+}
+
+/*function colocarBombasTableroJS(){
     for (let i = 0; i <= matriz.length-1; i++) {
         for (let j = 0; j <= matriz[0].length-1; j++) {
           if (matriz[i][j] === 'M') {
             document.getElementById(i + "" + j).style.backgroundImage = "url('mina.png')";
            /* document.getElementById(i + "" + j).style.backgroundSize = "cover";
-            document.getElementById(i + "" + j).style.color = "transparent";*/
+            document.getElementById(i + "" + j).style.color = "transparent";
           }else{
             document.getElementById(i + "" + j).innerText=matriz[i][j];
           }
         }
       }
-}
+}*/
 function calcularNumerosAlrededor() {
 
     for (let i = 0; i < matriz.length; i++) {
