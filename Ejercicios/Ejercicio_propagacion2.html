@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <style>
+            body * {
+                margin: 10px;
+                border: 1px solid blue;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="contenedor">
+            <button id="boton" >click me</button>
+        </div>
+
+        <script>
+            document.getElementById('contenedor').addEventListener('click', function(){
+                console.log('Contenedor hizo clic');
+            },true);
+
+            document.getElementById('boton').addEventListener('click', function(){
+                console.log('Boton hizo clic')
+                //event.stopPropagation();
+            })
+        </script>
+    </body>
+</html>

@@ -2,33 +2,32 @@
 <html>
 <head>
     <meta charset='utf-8'>
-    <title>Fetch</title>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Pokemon</title>
 </head>
 <body>
-    <div id="contenidoAPI"></div>
+    <div id = "contenidoAPI"></div>
     <script>
-        async function fetchDatos(){
+       async function fetchDatos(){
             
-            do{
+            /*do{
                 var numUser=Number(prompt("Dame el numero de personas que quieres generar"));
                 console.log(numUser);
-            }while(isNaN(numUser)||numUser==0);
+            }while(isNaN(numUser)||numUser==0);*/
 
             try{
-                const response = await fetch("https://randomuser.me/api?results="+numUser);
+                const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=10");
                 const datos = await response.json();
-                let tabla = document.createElement("table");
-                tabla.id="tabla"
-                aniadirElement(tabla);
 
-                for(let pers in datos.results ){
-                    
-                    let img = document.createElement("img");
-                    img.src =datos.results[pers].picture.large;
-                    aniadirElement(crearElemento("img",datos.results[pers].picture.large));
-                    aniadirElement(crearElemento("p",datos.results[pers].name.first));
-                    aniadirElement(crearElemento("p",datos.results[pers].email));
+
+                for(let pokemon of datos.results){
+                    const pk = await fetch(pokemon.url);
+                    const datospk = await pk.json();
+
+                    aniadirElement(crearElemento("img",datospk.sprites.front_default));
+                    aniadirElement(crearElemento("p",datospk.name));
                 }
+
 
                
             }catch(err){
@@ -47,12 +46,13 @@
             }
             return elemento;
         }
-        
+
         function aniadirElement(node){
             let div=document.getElementById('contenidoAPI');
             div.appendChild(node);
         }
-        fetchDatos();
+        fetchDatos(); 
+
     </script>
 </body>
 </html>

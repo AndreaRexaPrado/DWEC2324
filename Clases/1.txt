@@ -1,0 +1,48 @@
+Modulos JS
+En HTML 
+<script src ="" type="module"></script>
+En el js
+import{elemnto1,elemento2...} from "./ruta"
+
+En el modulo
+
+export definiciones_funciones/variables/cons/clase
+export {elementos separados por comas}
+
+TEORIA
+
+HTML XML XHTML
+
+DOM 
+
+FORMULARIOS VALIDACION
+
+COOKIES WEBSTORAGE
+
+PROMESAS PROGRAMACION ASINCRONA ASYNC AWAIT SETTIMEOUT TRYCATCH
+
+API FETCH
+
+CLASES
+
+MAP SET
+
+MPA VS separados
+
+CORS
+
+PROPAGACION
+
+Modulos
+
+FUNCIONES
+
+ERRORES
+
+BOM
+
+JSON
+
+ARRAY DESESTRUCTURACION DE OBJETOS
+
+EVENTOS LISTENER

@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <style>
+            body * {
+                margin: 10px;
+                border: 1px solid blue;
+            }
+        </style>
+    </head>
+    <body>
+
+        BUBBLING -> DENTRO HACIA AFUERA
+        <br>
+        CAPTURING -> DE AFUERA HACIA DENTRO, OBJETIVO Y BUBBLING
+        <br>
+        Pararlo -> event.stopPropagation()
+        <form onclick="alert('formulario')">FORM
+            <div onclick="alert('div')">DIV
+                <p onclick="alert('parrafo')">P</p>
+            </div>
+        </form>
+    </body>
+</html>
