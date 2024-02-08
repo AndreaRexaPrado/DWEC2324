@@ -33,6 +33,13 @@ Nombre de los ficheros: 202XXX.html y 202XXX.js-->
                 text-align: center;
 
             }
+            .contRojo{
+                color:red
+            }
+
+            .error{
+                border-color: red;
+            }
         </style>
     </head>
     <body>
@@ -41,11 +48,11 @@ Nombre de los ficheros: 202XXX.html y 202XXX.js-->
             <fieldset>
                 <legend>Datos personales</legend>
                 <label>Introduce tu nombre </label>
-                <input type="text" id="nombre"><br>
+                <input type="text" id="nombre" required><br>
                 <label>Introduce tu NIF </label>
-                <input type="text" id="nif"><br>
+                <input type="text" id="nif" required><br>
                 <label>Introduce tu fecha de matriculacion </label>
-                <input type="date" id="fechMat"><br>
+                <input type="date" id="fechMat" min="2018-01-01" max="2030-12-31"><br>
                 <label>Mensaje</label><br>
                
                 Caracteres: <p id="caract"></p>
@@ -54,7 +61,7 @@ Nombre de los ficheros: 202XXX.html y 202XXX.js-->
             <label>Elige un color</label><br>
             <input type="radio" name="color" value="rojo"> Rojo<br>
             <input type="radio" name="color" value="verde"> Verde<br>
-            <input type="radio" name="color" value="azul"> Azul<br>
+            <input type="radio" name="color" value="azul" checked> Azul<br>
             <label>Selecciona una asignatura</label>
             <select name="asig">
                 <option value="dwes">DWES</option>
@@ -80,14 +87,15 @@ Nombre de los ficheros: 202XXX.html y 202XXX.js-->
             <input type="checkbox" id ="all" name="dia" value="todos"> Todos<br>
         
             <label>Selecciona el dia preferente</label>
-            <select>
+            <select id="preferente">
                 <option value="Lunes" selected>Lunes</option>
                 <option value="Martes">Martes</option>
                 <option value="Miercoles">Miercoles</option>
                 <option value="Jueves">Jueves</option>
                 <option value="Viernes">Viernes</option>
             </select><br>
-            <button type="submit" id="enviar">Haz clic para enviar la informacion</button>
+            <p id="mensajeError"></p>
+            <button type="button" id="enviar">Haz clic para enviar la informacion</button>
             <button type="reset" id="reset">Comenzar a rellenar de nuevo</button>
             <button type="button" id="google">Haz clic sobre mi</button>
         </form>
