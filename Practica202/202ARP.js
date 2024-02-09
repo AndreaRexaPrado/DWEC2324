@@ -55,13 +55,12 @@ function inicio(){
     });
 
     document.getElementById("enviar").addEventListener('click',validar);
+   
 }
 
     function validar(e){
-    validarDNI();
-
         borrarError();
-        if(camposVacios()&&confirm("Estas seguro de tus datos")){
+        if(camposVacios()&&validarMssg()&&validarDNI()&&diasMarcados()&&confirm("Estas seguro de tus datos")){
             alert("Tus datos han sido enviados");
             borrarCampos();
             return true;
@@ -79,7 +78,7 @@ function inicio(){
     }
 
     //Validaciones
-
+    //Campos vacios
     function camposVacios(){
         let form = document.forms[0];
 
@@ -94,18 +93,61 @@ function inicio(){
         }
         return true;
     }
+    //Validacion del DNI, se parte el string y se calcula la letra con el metodo de arriba
     function validarDNI(){
         let inDNI= document.getElementById('nif');
-        let numdni= inDNI.substring(0,8)
-        console.log(numdni)
+        let numdni= inDNI.value.substring(0,8);
+        let letradni= inDNI.value.substring(8);
+        if(calcularLetraDNI(Number(numdni)) === letradni){
+            return true;
+        }
+        error(inDNI,"DNI no valido");
+        return false;
+
     }
+
+    //Al menos dos dias marcados
+
+    function diasMarcados(){
+        let cont = 0;
+        let dias = document.getElementsByName("dia");
+        for(let dia of dias){
+            if(dia.checked){
+                cont++;
+            }
+            
+        }
+        if(cont < 2){
+            error(dias,"Al menos dos dias marcados");
+            return false;
+        }
+        return true;
+
+    }
+    //Mensaje entre 2 y 500
+    function validarMssg(){
+        var elemento = document.getElementById("mensaje");
+        if(!elemento.checkValidity()){
+            
+            //error(elemento);
+            if(elemento.validity.valueMissing){
+                error(elemento,"No puede dejar mensaje vacio");
+            }
+            if(elemento.validity.patternMismatch){
+                error(elemento,"Mensaje entre 2 y 500 caracteres alfanumericos");
+            }
+            return false;
+        }
+        return true;
+    }
+    //Funcion para marcar los campos con error
     function error(elemento, mssg){
         
         document.getElementById("mensajeError").innerHTML = mssg;
         elemento.className = "error";
         elemento.focus();
     }
-
+    //Borrar los errores correguidos
     function borrarError(){
         document.getElementById("mensajeError").innerHTML="";
         var form = document.forms[0];
@@ -113,7 +155,7 @@ function inicio(){
             form.elements[i].className="";
         }
     }
-
+    //Limpia los campos
     function borrarCampos(){
 
         var form = document.forms[0];
@@ -122,8 +164,10 @@ function inicio(){
 
             for(let ele of form.elements){
                 
-                if(ele.type ==="text"||ele.type ==="date"){
+                if(ele.type ==="text"||ele.type ==="date"||ele.id==="mensaje"){
                     ele.value =""
+                }else if(ele.type==="checkbox"){
+                    ele.checked=false;
                 }
             }
         }
