@@ -2,12 +2,11 @@ var matriz=[];
 //let matrizAux2=[];
 var ancho = 0;
 var tablero = document.getElementById("tablero");
-var numMinas=0
-var numBanderas=0
-var numBanderasAcertadas=0
+var numMinas=0;
+var numBanderas=0;
+var numBanderasAcertadas=0;
 
 window.onload=(()=>{
-
 
   numMinas=calcularNumMinas(9,9);
   
