@@ -207,7 +207,7 @@ function calcularNumerosAlrededor() {
         if(celda.innerText==""){
           numBanderasAcertadas++;
           if(numBanderasAcertadas === numMinas){
-            alet("Has ganado!!");
+            alert("Has ganado!!");
           }
                   
         }
