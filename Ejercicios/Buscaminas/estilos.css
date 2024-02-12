@@ -12,14 +12,23 @@
     height: 25;
 }
 
+.bandera {
+    background-image: url('bandera.jpg'); /* Ruta de la imagen de la bandera */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent; /* Texto transparente para ocultar números en celdas con bandera */
+    cursor: pointer; /* Cambia el cursor al pasar sobre celdas con bandera */
+}
 .celda-tapada {
     background-color: #ccc; /* Puedes ajustar el color de fondo según tus preferencias */
     color: transparent; /* Texto transparente para ocultar números en celdas reveladas */
     cursor: pointer; /* Cambia el cursor al pasar sobre celdas tapadas */
   }
 
-  .mina-oculta {
-    background-image: url(''); /* Ruta de la imagen para celda oculta con mina */
+.mina-oculta {
+    background-image: url('mina.png'); /* Ruta de la imagen para celda oculta con mina */
     background-size: cover;
+    background-color: #ccc;
     color: transparent;
   }
