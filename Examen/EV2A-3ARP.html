@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <author>Andrea Rexa Prado</author>
+
+        <style>
+        body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        }
+
+        .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        }
+
+        form {
+        display: flex;
+        flex-direction: column;
+        }
+
+        label {
+        margin-bottom: 5px;
+        }
+
+        input, button {
+        margin-bottom: 10px;
+        padding: 8px;
+        }
+
+        button {
+        background-color: #620af0;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        }
+
+        button:hover {
+        background-color: #5445a0;
+        }
+
+        .error {
+        color: #ff0000;
+        font-size: 14px;
+        }
+        </style>
+        <title>EVA2-3ARP</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <h2>Formulario de Registro</h2>
+            <form id="formRegistro">
+            <label for="nombre">Nombre:</label>
+            <input type="text" pattern="[A-Za-z]{1,}" id="nombre" name="nombre" required>
+
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="tel">Numero de telefono:</label>
+            <input type="text" pattern="[0-9]{9}" id="tel" name="tel" required>
+
+            <label for="pass">Contraseña:</label>
+            <input type="password" id="pass" name="pass" required>
+
+            <label for="passConf">Confirmar contraseña:</label>
+            <input type="password" id="passConf" name="passConf" required>
+
+            <button type="submit" id="enviar">Registro</button>
+            </form>
+            <div id="messages"></div>
+        </div>
+
+        <script>
+            window.onload=inicio;
+
+            function inicio(){
+                document.getElementById("enviar").addEventListener('click',validar);
+            }
+
+            //Validacion del nombre con validity
+            function validarNombre(){
+                let elemento = document.getElementById("nombre");
+                if(!elemento.checkValidity()){
+                    //Si esta vacio   
+                    if(elemento.validity.valueMissing){
+                        error(elemento,"No puede dejar nombre vacio");
+                    }
+                    //Si ha introducido numeros en el nombre segun el atributo pattern
+                    if(elemento.validity.patternMismatch){
+                        error(elemento,"Solo letras en el nombre");
+                    }
+                    return false;
+                }
+                return true;
+            }
+            //Validacion del telefono con validity
+
+            function validarTelefono(){
+                let elemento = document.getElementById("tel");
+                if(!elemento.checkValidity()){
+                    //Si esta vacio   
+                    if(elemento.validity.valueMissing){
+                            error(elemento,"No puede dejar el telefono vacio");
+                    }
+                    //Si el telefono tiene menos de 9 digitos o son letras segun el atributo pattern
+                    if(elemento.validity.patternMismatch){
+                        error(elemento,"Solo numeros en el telefono o al menos 9 digitos");
+                    }
+                    return false;
+                }
+                return true;
+            }
+            //Validacion de correo
+            function validarCorreo(){
+                //a@a.es email de pruebas
+                let email = document.getElementById("email")
+                if (!/^\S+@\S+\.\S+$/.test(email.value)) {
+                    error(email,'Correo electrónico inválido');
+                    return false;
+                }
+                return true;
+
+            }
+            //Validacion de contraseña
+            function validarContrasenia(){
+
+                let password = document.getElementById("pass");
+                if (password.value.length < 8 || !/[a-z]/.test(password.value) || !/[A-Z]/.test(password.value) || !/\d/.test(password.value)) {
+                    error(password,'Contraseña inválida');
+                    return false;
+                }
+                return true;
+
+            }
+            //Validacion de contraseña de confirmacion
+            function validarContraseniaConf(){
+
+                let password = document.getElementById("pass");
+
+                let passwordConfir = document.getElementById("passConf");
+                //Si la contraseña es valida segun patrones
+                if (passwordConfir.value.length < 8 || !/[a-z]/.test(passwordConfir.value) || !/[A-Z]/.test(passwordConfir.value) || !/\d/.test(passwordConfir.value)) {
+                    error(passwordConfir,'Contraseña de confirmacion inválida');
+                    return false;
+                }
+                //Si no coinciden
+                if(password.value !== passwordConfir.value){
+                    error(passwordConfir,'Las contraseñas no coinciden');
+                    return false;
+                }
+                return true;
+
+            }
+
+            function validar(e){
+                borrarError();
+                if(validarNombre()&&validarCorreo()&&validarTelefono()&&validarContrasenia()&&validarContraseniaConf()&&confirm("Estas seguro de tus datos")){
+                    alert("Tus datos han sido enviados");
+                
+                    return true;
+                }else{
+                    e.preventDefault();
+                    return false;
+                }
+            }
+            //Funcion para poner los errores, la clase en el campo del error y enfocarla
+            function error(elemento, mssg){
+                
+                document.getElementById("messages").insertAdjacentText("beforeend",mssg);
+                elemento.className = "error";
+                elemento.focus();
+            }
+            //Borrar los errores correguidos
+            function borrarError(){
+                document.getElementById("messages").innerHTML="";
+                var form = document.forms[0];
+                for(var i=0;i<form.elements.length;i++){
+                    form.elements[i].className="";
+                }
+            }
+        </script>
+    </body>
+</html>

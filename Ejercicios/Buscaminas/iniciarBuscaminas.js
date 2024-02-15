@@ -1,19 +1,17 @@
 var matriz=[];
-//let matrizAux2=[];
-var ancho = 0;
+let matrizAux2=[];
 var tablero = document.getElementById("tablero");
 var numMinas=0;
 var numBanderas=0;
 var numBanderasAcertadas=0;
+var contadorBanderasElemento = document.getElementById("contador-banderas");
+var temporizadorElemento = document.getElementById("temporizador");
+var tiempoTranscurrido = 0;
+var temporizador;
 
 window.onload=(()=>{
 
-  numMinas=calcularNumMinas(9,9);
-  
-  dibujarTableroHTML(9,9);
-  colocarMinasMatriz(9,9);
-  calcularNumerosAlrededor();
-  colocarBombasTableroJS();
+  generarTablero(9,9);
 
   var select = document.getElementById("selectMinas");
  
@@ -22,40 +20,56 @@ window.onload=(()=>{
 
     switch(selectedOption.value){
       case "op1":
-          dibujarTableroHTML(9,9);
-          numMinas=calcularNumMinas(9,9);  
-          colocarMinasMatriz(9,9);
-          calcularNumerosAlrededor();
-          ancho = 9;
-          colocarBombasTableroJS();
-          console.log(numMinas);
-
+          generarTablero(9,9);
+          console.log("matriz")
+          console.log(matriz)
           break;
       case "op2":
-          dibujarTableroHTML(16,16);
-          numMinas=calcularNumMinas(16,16); 
-          colocarMinasMatriz(16,16);
-          calcularNumerosAlrededor();
-          ancho = 16;
-          colocarBombasTableroJS();
-          
+          generarTablero(16,16);
+          console.log(matriz)
           break;
       case "op3":
-          dibujarTableroHTML(30,16);
-          numMinas=calcularNumMinas(30,16);  
-          colocarMinasMatriz(30,16);
-          calcularNumerosAlrededor();
-          ancho = 30;
-          colocarBombasTableroJS();
-          
+          generarTablero(30,16);
+          console.log("matriz")
+          console.log(matriz)
           break;
 
     }
   });
-
   document.getElementById('solucion').addEventListener('click',revelarBombas);
+
 });
 
+function generarTablero(ancho,alto){
+  dibujarTableroHTML(ancho,alto);
+  numMinas=calcularNumMinas(ancho,alto);  
+  colocarMinasMatriz(ancho,alto);
+  calcularNumerosAlrededor();
+  colocarBombasTableroJS();
+  iniciarTemporizador();
+}
+// Función para iniciar el temporizador
+function iniciarTemporizador() {
+  temporizador = setInterval(function() {
+      tiempoTranscurrido++;
+      actualizarTemporizador();
+  }, 1000);
+}
+
+// Función para actualizar el contador de banderas
+function actualizarContadorBanderas() {
+  contadorBanderasElemento.innerText = "Banderas: " + numBanderas;
+}
+
+// Función para actualizar el temporizador
+function actualizarTemporizador() {
+  temporizadorElemento.innerText = "Tiempo: " + tiempoTranscurrido + "s";
+}
+
+// Función para detener el temporizador
+function detenerTemporizador() {
+  clearInterval(temporizador);
+}
 
 function dibujarTableroHTML(ancho,alto){
     if (tablero && tablero.childNodes.length > 0) {
@@ -94,7 +108,20 @@ function dibujarTableroHTML(ancho,alto){
 
 
 function calcularNumMinas(x,y){
-    return Math.floor((x*y)*0.2);
+    var prob = 0;
+    switch(x){
+      case 9: 
+        prob= 0.2;
+        break
+      case 16: 
+        prob= 0.4;
+        break
+      case 30: 
+        prob= 0.6;
+        break
+  
+    }
+    return Math.floor((x*y)*prob);
 }
 
 function colocarMinasMatriz(x,y){
@@ -112,10 +139,11 @@ function colocarMinasMatriz(x,y){
         }
     }
 }
+
 function colocarBombasTableroJS() {
   
   for (let i = 0; i < matriz.length; i++) {
-      //matrizAux2[i]= new Array(matriz[0].length);
+      matrizAux2[i]= new Array(matriz[0].length);
       for (let j = 0; j < matriz[0].length; j++) {
           
           const celda = document.getElementById(i + "" + j);
@@ -123,11 +151,11 @@ function colocarBombasTableroJS() {
           if (matriz[i][j] !== 'M') {
             celda.innerText = matriz[i][j];                  
           } 
-         // matrizAux2[i][j]= celda;
+        matrizAux2[i][j]= celda;
       }
   }
-/*console.log("MatrizAux2");
-console.log(matrizAux2);*/
+console.log("MatrizAux2");
+console.log(matrizAux2);
 }
 
 function calcularNumerosAlrededor() {
@@ -203,9 +231,14 @@ function calcularNumerosAlrededor() {
         // Agrega una clase para mostrar una bandera en la celda
         celda.classList.add("bandera");
         numBanderas++;
-        if(celda.innerText==""){
+        actualizarContadorBanderas();
+        console.log("numBanderas:"+numBanderas);
+        if(matriz[fila][columna] === 'M'){
           numBanderasAcertadas++;
+          console.log("numBanderasAcertadas:"+numBanderasAcertadas);
+          
           if(numBanderasAcertadas === numMinas){
+            detenerTemporizador();
             alert("Has ganado!!");
           }
                   

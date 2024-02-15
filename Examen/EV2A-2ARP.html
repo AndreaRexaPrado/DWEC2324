@@ -1,0 +1,127 @@
+<html>
+    <head>
+        <title>EVA2-2ARP</title>
+        <author>Andrea Rexa Prado</author>
+
+    </head>
+    <body>
+        <script>
+            window.onload=inicio;
+
+            function inicio(){
+                //Clase base animal
+                class Animal{
+                    //Constructor
+                    constructor(nombre,edad,patas,especie,estado){
+                        this._nombre=nombre; //Guion para distinguir que es una propiedad NO UN METODO
+                        this._edad=edad; 
+                        this._patas=patas;
+                        this._especie=especie; 
+                        this._estado=estado; 
+                        
+                    }
+                
+                
+                    introduce(){
+                        return `Hola, mi nombre es ${this._nombre} y tengo ${this._nombre} años.`;
+                    }
+
+                    //Getters y setters
+
+                    get nombre(){
+                        return this._nombre;
+                    }
+
+                    set nombre(nombre){
+                        this._nombre = nombre;
+
+                    }
+
+                    get edad(){
+                        return this._edad;
+                    }
+
+                    set edad(edad){
+                        this._edad = edad;
+
+                    }
+
+                    get patas(){
+                        return this._patas;
+                    }
+
+                    set nombre(patas){
+                        this._patas = patas;
+
+                    }
+
+                    get especie(){
+                        return this._especie;
+                    }
+
+                    set especie(especie){
+                        this._especie = especie;
+
+                    }
+
+                    get estado(){
+                        return this._estado;
+                    }
+
+                    set nombre(estado){
+                        this._estado = estado;
+
+                    }
+                }  
+                //Clase tiburon
+                class Tiburon extends Animal{
+
+                    constructor(nombre,edad,estado){
+                        //Llamada al constructor del padre (Animal)
+                        super(nombre,edad,0,"Escualos",estado);
+                    }   
+                }
+                //Clase gato
+                class Gato extends Animal{
+                    constructor(nombre,edad,estado){
+                        super(nombre,edad,4,"Felinos",estado);
+                    }   
+                    //Modificacion del metodo introduce
+                    introduceGato(){
+                        return this.introduce() + "¡Miau, miau!";
+                    }
+                }
+
+                class Perro extends Animal{
+                    constructor(nombre,edad,estado,dueño){
+                        super(nombre,edad,4,"Canidos",estado);
+                        this._dueño = dueño;
+                    }   
+
+                    saludaDueño(){
+                        return `Hola  ${this._dueño}`;
+                    }
+
+                    get dueño(){
+                        return this._dueño;
+                    }
+
+                    set dueño(dueño){
+                        this._dueño = dueño;
+
+                    }
+                }
+                let t1 = new Tiburon("Chum",5,"Hambriento");
+                console.log(t1.introduce());
+        
+                let g1 = new Gato("Silvestre",3,"juguetón");
+                console.log(g1.introduceGato());
+
+                let p1 = new Perro("Cane",2,"feliz","Pepe");
+                console.log(p1.introduce());
+                console.log(p1.saludaDueño());
+
+            }
+        </script>
+    </body>
+</html>

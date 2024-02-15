@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <title>EVA2-1ARP</title>
+        <author>Andrea Rexa Prado</author>
+    </head>
+    <body>
+        <div id="mssgdiv"></div>
+        <script>
+            let contCicl=1;
+
+            //Funcion que devuelve una promesa que espera 5 segundos para imprimir el dorsal
+            function generarCiclista(){
+                return new Promise((resolve,reject)=>{
+                    setTimeout(()=>{
+                        let mssg= `Dorsal ${contCicl}`;
+                        
+                        resolve(mssg)},5000);
+                });
+                
+            }
+            //Funcion que devuelve una promesa que imprime la cuenta atras
+            function cuentaAtras(){
+                return new Promise((resolve,reject)=>{
+                    setTimeout(() => {      
+                       for(let c = 3;c>0;c--){
+                            resolve(c); 
+                       }             
+                    }, 3000);
+                    
+                });
+
+            }
+            //Funcion que devuelve una promesa que imprime el mensaje de salida
+            function salida(){
+                return new Promise((resolve,reject)=>{
+                    setTimeout(()=>{
+                        
+                        resolve("¡Salida!")},4000);
+                });
+
+            }
+            async function salidaCiclistas(){
+                try{
+                    while(contCicl <=25){
+                        document.getElementById("mssgdiv").innerText = await generarCiclista();
+                        
+                       
+                        document.getElementById("mssgdiv").innerText = await cuentaAtras();
+                        
+                  
+                        document.getElementById("mssgdiv").innerText = await salida();
+                        contCicl++;
+                    }
+                   
+                }catch(err){
+                    console.log(err);
+
+                }
+            }
+            salidaCiclistas();
+        </script>
+    </body>
+</html>

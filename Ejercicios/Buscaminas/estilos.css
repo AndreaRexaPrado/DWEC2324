@@ -1,17 +1,42 @@
-.contenido .botones{
-    display: flex;
-    justify-content: center;
-}
-.juego table{
+/* Estilos para el contenedor de botones */
+.contenido .botones {
     display: flex;
     justify-content: center;
 }
 
-.juego table button{
-    width: 25;
-    height: 25;
+/* Estilos para el contenedor de información */
+.contenido .info {
+    display: flex;
+    justify-content: center;
+}
+/* Estilos para el contenedor de botones */
+.contenido .botones {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px; /* Espacio entre el contenedor de botones y el siguiente elemento */
 }
 
+/* Estilos para el contenedor de información */
+.contenido .info {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px; /* Espacio entre el contenedor de información y el siguiente elemento */
+}
+
+/* Estilos para la tabla del juego */
+.juego table {
+    display: inline-block;
+    margin: 0 auto; /* Centra horizontalmente la tabla del juego */
+}
+
+/* Estilos para los botones de la tabla del juego */
+.juego table button {
+    width: 30px; /* Ancho de 30 píxeles */
+    height: 30px; /* Alto de 30 píxeles */
+    font-size: 14px; /* Tamaño de fuente */
+}
+
+/* Estilos para las celdas que contienen una bandera */
 .bandera {
     background-image: url('bandera.jpg'); /* Ruta de la imagen de la bandera */
     background-size: contain;
@@ -20,15 +45,20 @@
     color: transparent; /* Texto transparente para ocultar números en celdas con bandera */
     cursor: pointer; /* Cambia el cursor al pasar sobre celdas con bandera */
 }
+
+/* Estilos para las celdas que aún no han sido reveladas */
 .celda-tapada {
-    background-color: #ccc; /* Puedes ajustar el color de fondo según tus preferencias */
+    background-color: #ccc; /* Color de fondo gris */
     color: transparent; /* Texto transparente para ocultar números en celdas reveladas */
     cursor: pointer; /* Cambia el cursor al pasar sobre celdas tapadas */
-  }
+}
 
+/* Estilos para las celdas que contienen una mina oculta */
 .mina-oculta {
     background-image: url('mina.png'); /* Ruta de la imagen para celda oculta con mina */
-    background-size: cover;
-    background-color: #ccc;
-    color: transparent;
-  }
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #ccc; /* Color de fondo gris */
+    color: transparent; /* Texto transparente para ocultar números en celdas con mina */
+}
