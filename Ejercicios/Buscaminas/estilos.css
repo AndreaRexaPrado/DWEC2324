@@ -33,7 +33,7 @@
 .juego table button {
     width: 30px; /* Ancho de 30 píxeles */
     height: 30px; /* Alto de 30 píxeles */
-    font-size: 14px; /* Tamaño de fuente */
+   
 }
 
 /* Estilos para las celdas que contienen una bandera */
@@ -56,7 +56,7 @@
 /* Estilos para las celdas que contienen una mina oculta */
 .mina-oculta {
     background-image: url('mina.png'); /* Ruta de la imagen para celda oculta con mina */
-    background-size: contain;
+
     background-repeat: no-repeat;
     background-position: center;
     background-color: #ccc; /* Color de fondo gris */
